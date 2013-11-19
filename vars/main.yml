@@ -1,0 +1,6 @@
+---
+sensu: {
+  amqp: {
+    password: "placeholder"
+  }
+}

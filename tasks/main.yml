@@ -1,0 +1,27 @@
+---
+- name: add rabbitmq sensu vhost
+  rabbitmq_vhost: name=/sensu state=present
+
+- name: add rabbitmq sensu user and set priveleges
+  rabbitmq_user:
+    user=sensu
+    password={{ sensu.amqp.password }}
+    vhost=/sensu
+    configure_priv=.*
+    read_priv=.*
+    write_priv=.*
+    state=present
+
+- name: add the key of the sensu official repo
+  apt_key: url=https://repos.sensuapp.org/apt/pubkey.gpg state=present
+
+- name: add the sensu official repo
+  copy: src=files/sensu-server.list dest=/etc/apt/sources.list.d/ backup=yes
+  register: aptrepo
+
+- name: refresh apt cache
+  apt: update_cache=yes
+  when: aptrepo.changed
+
+- name: install sensu-server
+  apt: name=sensu state=latest
