@@ -26,6 +26,26 @@
 - name: install sensu-server
   apt: name=sensu state=latest
 
+- name: Create ssl dir
+  file:
+    path=/etc/sensu/ssl
+    owner=sensu
+    group=sensu
+    mode=0750
+    state=directory
+
+- name: Copy ssl files
+  copy:
+    src=files/sensu_{{ item }}.pem
+    dest=/etc/sensu/ssl/{{ item }}.pem
+    owner=sensu
+    group=sensu
+    mode=0640
+    backup=yes
+  with_items:
+    - client_cert
+    - client_key
+
 - name: copie config.json
   template:
     src=templates/sensu.config.json.j2
