@@ -29,6 +29,24 @@
 - name: install sensu-server
   apt: name=sensu state=latest
 
+- name: copy the patched init script
+  copy:
+    src=sensu-{{ item }}
+    dest=/etc/init.d/
+    owner=root
+    group=root
+    mode=755
+    backup=yes
+  with_items:
+    - server
+    - api
+
+- name: ensure the patched init script are used
+  command: /usr/sbin/update-rc.d sensu-{{ item }} remove && /usr/sbin/update-rc.d sensu-{{ item }} defaults
+  with_items:
+    - server
+    - api
+
 - name: Create ssl dir
   file:
     path=/etc/sensu/ssl
