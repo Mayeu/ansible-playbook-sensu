@@ -1,6 +1,0 @@
-[submodule "roles/redis"]
-	path = roles/redis
-	url = git@github.com:Mayeu/ansible-playbook-redis
-[submodule "roles/rabbitmq"]
-	path = roles/rabbitmq
-	url = git@github.com:Mayeu/ansible-playbook-rabbitmq
