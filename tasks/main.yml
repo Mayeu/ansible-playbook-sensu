@@ -16,7 +16,10 @@
   apt_key: url=https://repos.sensuapp.org/apt/pubkey.gpg state=present
 
 - name: add the sensu official repo
-  copy: src=files/sensu-server.list dest=/etc/apt/sources.list.d/ backup=yes
+  copy:
+    src=files/sensu-server.list
+    dest=/etc/apt/sources.list.d/
+    backup=yes
   register: aptrepo
 
 - name: refresh apt cache
@@ -45,6 +48,13 @@
   with_items:
     - client_cert
     - client_key
+
+- name: enable sensu-{server,api,dashboard} to survive reboot
+  service: name=sensu-{{ item }} enabled=yes
+  with_items:
+    - server
+    - api
+    - dashboard
 
 - name: copie config.json
   template:

@@ -16,12 +16,17 @@ ansible anyway.
 
 ###Using it
 
-You have to put the needed certificates in your `files/` folder:
+You will need this [RabbitMQ
+role](https://github.com/Mayeu/ansible-playbook-rabbitmq) and this [Redis
+role](https://github.com/Mayeu/ansible-playbook-redis). And you have to put the
+needed certificates in your `files/` folder:
 
     files/
      |- rabbitmq_cacert.pem
      |- rabbitmq_server_cert.pem
      |- rabbitmq_server_key.pem
+     |- sensu_client_cert.pem
+     |- sensu_client_key.pem
 
 ##Test
 

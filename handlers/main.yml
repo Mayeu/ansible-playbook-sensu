@@ -1,0 +1,7 @@
+---
+- name: restart sensu server daemons
+  service: name=sensu-{{ item }} state=restarted
+  with_items:
+    - server
+    - api
+    - dashboard

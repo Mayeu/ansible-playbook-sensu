@@ -9,3 +9,5 @@
   roles:
     - redis
     - rabbitmq
+  handlers:
+    - include: handlers/main.yml
