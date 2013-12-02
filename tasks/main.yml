@@ -4,8 +4,8 @@
 
 - name: add rabbitmq sensu user and set priveleges
   rabbitmq_user:
-    user=sensu
-    password={{ sensu.amqp.password }}
+    user={{ sensu_server_rabbitmq_user }}
+    password={{ sensu_server_rabbitmq_password }}
     vhost=/sensu
     configure_priv=.*
     read_priv=.*
@@ -25,3 +25,13 @@
 
 - name: install sensu-server
   apt: name=sensu state=latest
+
+- name: copie config.json
+  template:
+    src=templates/sensu.config.json.j2
+    dest=/etc/sensu/config.json
+    owner=sensu
+    group=sensu
+    mode=0640
+    backup=yes
+  notify: restart sensu server daemons

@@ -1,6 +1,13 @@
 ---
-sensu: {
-  amqp: {
-    password: "placeholder"
-  }
-}
+sensu_server_redis_host: "127.0.0.1"
+
+sensu_server_api_host: "127.0.0.1"
+
+sensu_server_rabbitmq_hostname: "127.0.0.1"
+sensu_server_rabbitmq_user: "sensu"
+sensu_server_rabbitmq_password: "placeholder"
+
+sensu_server_dashboard_password: "placeholder"
+sensu_server_dashboard_host: "127.0.0.1"
+
+rabbitmq_conf_tcp_listeners_port: ''
