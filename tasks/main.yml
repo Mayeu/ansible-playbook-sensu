@@ -86,7 +86,7 @@
 
 - name: create checks.json file
   template:
-    src=templates/sensu_server_conf_check_common.json
+    src=checks.json.j2
     dest=/etc/sensu/conf.d/check_common.json
     owner=sensu
     group=sensu
