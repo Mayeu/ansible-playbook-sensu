@@ -3,6 +3,8 @@ sensu_server_redis_host: "127.0.0.1"
 
 sensu_server_api_host: "127.0.0.1"
 
+sensu_server_embedded_ruby: "false"
+
 sensu_server_rabbitmq_hostname: "127.0.0.1"
 sensu_server_rabbitmq_user: "sensu"
 sensu_server_rabbitmq_password: "placeholder"

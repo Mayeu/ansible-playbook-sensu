@@ -37,6 +37,7 @@ You may need to redefine the following variables:
 `sensu_server_dashboard_host`|String|Hostname of the Sensu Dashboard|"127.0.0.1"
 `sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|''
 `sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|''
+`sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|"false"
 
 ####Files
 You have to put the

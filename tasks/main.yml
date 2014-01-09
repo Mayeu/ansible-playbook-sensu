@@ -29,6 +29,12 @@
 - name: install sensu-server
   apt: name=sensu state=latest
 
+- name: set which Ruby to use
+  lineinfile:
+    dest=/etc/default/sensu
+    regexp=^EMBEDDED_RUBY=
+    line=EMBEDDED_RUBY={{ sensu_server_embedded_ruby }}
+
 - name: copy the patched init script
   copy:
     src=sensu-{{ item }}
