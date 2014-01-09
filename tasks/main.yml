@@ -84,10 +84,19 @@
     backup=yes
   notify: restart sensu server daemons
 
-- name: create checks.json file
+- name: generate /etc/sensu/conf.d/checks.json file
   template:
     src=checks.json.j2
-    dest=/etc/sensu/conf.d/check_common.json
+    dest=/etc/sensu/conf.d/checks.json
+    owner=sensu
+    group=sensu
+    mode=0750
+  notify: restart sensu server daemons
+
+- name: generate /etc/sensu/conf.d/handlers.json file
+  template:
+    src=handlers.json.j2
+    dest=/etc/sensu/conf.d/handlers.json
     owner=sensu
     group=sensu
     mode=0750

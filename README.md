@@ -35,7 +35,8 @@ You may need to redefine the following variables:
 `sensu_server_rabbitmq_password`|String|Password to connect to RabbitMQ|"placeholder"
 `sensu_server_dashboard_password`|String|Password for the sensu dashboard|"placeholder"
 `sensu_server_dashboard_host`|String|Hostname of the Sensu Dashboard|"127.0.0.1"
-`sensu_checks`|Complexe type|A variable representing the checks configuration. Will be auto converted to JSON|''
+`sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|''
+`sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|''
 
 ####Files
 You have to put the
