@@ -16,10 +16,30 @@ ansible anyway.
 
 ###Using it
 
+####Roles Dependancies
+
 You will need this [RabbitMQ
 role](https://github.com/Mayeu/ansible-playbook-rabbitmq) and this [Redis
-role](https://github.com/Mayeu/ansible-playbook-redis). And you have to put the
-needed certificates in your `files/` folder:
+role](https://github.com/Mayeu/ansible-playbook-redis).
+
+####Variables
+
+You may need to redefine the following variables:
+
+|Name|Type|Description|Default|
+|----|----|-----------|-------|
+`sensu_server_redis_host`|String|Hostname of the Redis server|"127.0.0.1"
+`sensu_server_api_host`|String|Adress of the Sensu API server|"127.0.0.1"
+`sensu_server_rabbitmq_hostname`|String|Hostname of the RabbitMQ server|"127.0.0.1"
+`sensu_server_rabbitmq_user`|String|Username to connect to RabbitMQ|"sensu"
+`sensu_server_rabbitmq_password`|String|Password to connect to RabbitMQ|"placeholder"
+`sensu_server_dashboard_password`|String|Password for the sensu dashboard|"placeholder"
+`sensu_server_dashboard_host`|String|Hostname of the Sensu Dashboard|"127.0.0.1"
+`sensu_checks`|Complexe type|A variable representing the checks configuration. Will be auto converted to JSON|''
+
+####Files
+You have to put the
+needed certificates in your root `files/` folder:
 
     files/
      |- rabbitmq_cacert.pem
