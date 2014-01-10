@@ -40,8 +40,11 @@ You may need to redefine the following variables:
 `sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|"false"
 
 ####Files
-You have to put the
-needed certificates in your root `files/` folder:
+
+You need to have the following files in your playbook `files/` folder:
+
+* SSL certificate for rabbitmq
+* the handlers script needed
 
     files/
      |- rabbitmq_cacert.pem
@@ -49,6 +52,10 @@ needed certificates in your root `files/` folder:
      |- rabbitmq_server_key.pem
      |- sensu_client_cert.pem
      |- sensu_client_key.pem
+     |- sensu/
+     |--- handlers/
+     |----- <all your .rb handler script>
+
 
 ##Test
 

@@ -107,3 +107,12 @@
     group=sensu
     mode=0750
   notify: restart sensu server daemons
+
+- name: copy the handlers files
+  copy:
+    src=files/sensu/handlers/
+    dest=/etc/sensu/handlers/
+    owner=sensu
+    group=sensu
+    mode=0750
+  notify: restart sensu server daemons
