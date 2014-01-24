@@ -12,10 +12,10 @@
     write_priv=.*
     state=present
 
-- name: add the key of the sensu official repo
+- name: add the official Sensu repository's key
   apt_key: url=https://repos.sensuapp.org/apt/pubkey.gpg state=present
 
-- name: add the sensu official repo
+- name: add the official Sensu repository
   copy:
     src=sensu-server.list
     dest=/etc/apt/sources.list.d/
@@ -27,7 +27,7 @@
   when: aptrepo.changed
 
 - name: install sensu-server
-  apt: name=sensu state=latest
+  apt: name=sensu state=present
 
 - name: set which Ruby to use
   lineinfile:
@@ -53,7 +53,7 @@
     - server
     - api
 
-- name: Create ssl dir
+- name: create the SSL directory
   file:
     path=/etc/sensu/ssl
     owner=sensu
@@ -61,7 +61,7 @@
     mode=0750
     state=directory
 
-- name: Copy ssl files
+- name: copy the SSL certificate & key
   copy:
     src=files/sensu_{{ item }}.pem
     dest=/etc/sensu/ssl/{{ item }}.pem
@@ -80,7 +80,7 @@
     - api
     - dashboard
 
-- name: copie config.json
+- name: generate /etc/sensu/config.json
   template:
     src=sensu.config.json.j2
     dest=/etc/sensu/config.json
@@ -90,7 +90,7 @@
     backup=yes
   notify: restart sensu server daemons
 
-- name: generate /etc/sensu/conf.d/checks.json file
+- name: generate /etc/sensu/conf.d/checks.json
   template:
     src=checks.json.j2
     dest=/etc/sensu/conf.d/checks.json
@@ -99,7 +99,7 @@
     mode=0750
   notify: restart sensu server daemons
 
-- name: generate /etc/sensu/conf.d/handlers.json file
+- name: generate /etc/sensu/conf.d/handlers.json
   template:
     src=handlers.json.j2
     dest=/etc/sensu/conf.d/handlers.json
