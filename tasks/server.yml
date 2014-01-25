@@ -1,0 +1,69 @@
+---
+- name: add rabbitmq sensu vhost
+  rabbitmq_vhost: name=/sensu state=present
+
+- name: add rabbitmq sensu user and set priveleges
+  rabbitmq_user:
+    user={{ sensu_server_rabbitmq_user }}
+    password="{{ sensu_server_rabbitmq_password }}"
+    vhost=/sensu
+    configure_priv=.*
+    read_priv=.*
+    write_priv=.*
+    state=present
+    force=yes
+
+- name: copy the patched init script
+  copy:
+    src=sensu-{{ item }}
+    dest=/etc/init.d/
+    owner=root
+    group=root
+    mode=755
+    backup=yes
+  with_items:
+    - server
+    - api
+
+- name: ensure the patched init script are used
+  command: /usr/sbin/update-rc.d sensu-{{ item }} remove && /usr/sbin/update-rc.d sensu-{{ item }} defaults
+  with_items:
+    - server
+    - api
+
+- name: enable sensu-{server,api,dashboard} to survive reboot
+  service: name=sensu-{{ item }} enabled=yes
+  with_items:
+    - server
+    - api
+    - dashboard
+
+- name: generate /etc/sensu/conf.d/checks.json
+  template:
+    src=checks.json.j2
+    dest=/etc/sensu/conf.d/checks.json
+    owner=sensu
+    group=sensu
+    mode=0750
+  notify:
+    - restart sensu server
+
+- name: generate /etc/sensu/conf.d/handlers.json
+  template:
+    src=handlers.json.j2
+    dest=/etc/sensu/conf.d/handlers.json
+    owner=sensu
+    group=sensu
+    mode=0750
+  notify:
+    - restart sensu server
+
+- name: copy the handlers files
+  copy:
+    src=files/sensu/handlers/
+    dest=/etc/sensu/handlers/
+    owner=sensu
+    group=sensu
+    mode=0750
+  notify:
+    - restart sensu server
