@@ -1,7 +1,12 @@
 ---
-- name: restart sensu server daemons
+- name: restart sensu server
   service: name=sensu-{{ item }} state=restarted
   with_items:
     - server
     - api
     - dashboard
+  when: sensu_install_server
+
+- name: restart sensu client
+  service: name=sensu-client state=restarted
+  when: sensu_install_client
