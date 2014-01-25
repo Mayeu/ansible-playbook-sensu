@@ -10,7 +10,7 @@ support other OS.
 
 ##Installation
 
-Just clone (or submodule) this repository under the name `sensu-server` in your
+Just clone (or submodule) this repository under the name `sensu` in your
 `roles` directory. This file, `test.yml` and `Vagrantfile` will be ignored by
 ansible anyway.
 
