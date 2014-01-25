@@ -1,18 +1,4 @@
 ---
-- name: add rabbitmq sensu vhost
-  rabbitmq_vhost: name=/sensu state=present
-
-- name: add rabbitmq sensu user and set priveleges
-  rabbitmq_user:
-    user={{ sensu_server_rabbitmq_user }}
-    password="{{ sensu_server_rabbitmq_password }}"
-    vhost=/sensu
-    configure_priv=.*
-    read_priv=.*
-    write_priv=.*
-    state=present
-    force=yes
-
 - name: copy the patched init script
   copy:
     src=sensu-{{ item }}
