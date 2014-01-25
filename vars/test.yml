@@ -1,3 +1,44 @@
 ---
 # Set the rabbitmq to listen only on ssl
-rabbitmq_conf_tcp_listeners_port: ''
+rabbitmq_conf_tcp_listeners_port   : ''
+rabbitmq_conf_ssl_listeners_address: '0.0.0.0'
+
+# Set the rabbitmq vhost
+rabbitmq_vhost_definitions:
+  - vhost   : sensu
+    user    : sensu
+    password: placeholder
+
+# Sensu client variable
+sensu_client_subscription_names:
+  - test
+
+# Sensu Server variable
+sensu_server_redis_host: "127.0.0.1"
+
+sensu_server_api_host: "127.0.0.1"
+
+sensu_server_embedded_ruby: "true"
+
+sensu_server_rabbitmq_hostname: '192.168.60.2'
+sensu_server_rabbitmq_user    : "sensu"
+sensu_server_rabbitmq_password: "placeholder"
+
+sensu_server_dashboard_host    : "127.0.0.1"
+sensu_server_dashboard_password: "placeholder"
+
+# Dummy sensu_checks
+sensu_checks:
+  test_check:
+    handler    : default
+    command    : "/bin/sh echo Hello World"
+    interval   : 60
+    subscribers:
+      - test
+
+# Dummy sensu_handlers
+sensu_handlers:
+  test_handler:
+    type   : pipe
+    command: "echo"
+ 

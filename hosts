@@ -1,0 +1,8 @@
+[sensu_server_client]
+192.168.60.2
+
+[sensu_server]
+192.168.60.3
+
+[sensu_client]
+192.168.60.4
