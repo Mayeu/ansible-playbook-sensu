@@ -27,6 +27,7 @@ role](https://github.com/Mayeu/ansible-playbook-redis).
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
 `sensu_install_client`|Boolean|Determine if we need to install the client part|`true`
+`sensu_install_server`|Boolean|Determine if we need to install the server part|`true`
 `sensu_client_hostname`|String|Hostname of this client|`"localhost"`
 `sensu_client_address`|String|Address of this client|`"127.0.0.1"`
 `sensu_client_subscription_names`|List|List of test to execute on this client| `[test]`
@@ -48,18 +49,19 @@ You need to have the following files in your playbook `files/` folder:
 * SSL certificate for rabbitmq and Sensu
 * the handlers script needed
 
-    files/
-     |- rabbitmq_cacert.pem
-     |- rabbitmq_server_cert.pem
-     |- rabbitmq_server_key.pem
-     |- sensu_client_cert.pem
-     |- sensu_client_key.pem
-     |- sensu/
-     |--- plugins/
-     |----- <all your .rb check script>
-     |--- handlers/
-     |----- <all your .rb handler script>
-
+```
+files/
+ |- rabbitmq_cacert.pem
+ |- rabbitmq_server_cert.pem
+ |- rabbitmq_server_key.pem
+ |- sensu_client_cert.pem
+ |- sensu_client_key.pem
+ |- sensu/
+ |--- plugins/
+ |----- <all your .rb check script>
+ |--- handlers/
+ |----- <all your .rb handler script>
+```
 
 ##Test
 
