@@ -1,6 +1,5 @@
 ---
-# Set the rabbitmq to listen only on ssl
-rabbitmq_conf_tcp_listeners_port   : ''
+# Set the rabbitmq SSL address
 rabbitmq_conf_ssl_listeners_address: '0.0.0.0'
 
 # Set the rabbitmq vhost

@@ -1,4 +1,6 @@
 ---
+# tasks file for sensu
+
 - include: common.yml
 
 - include: server.yml

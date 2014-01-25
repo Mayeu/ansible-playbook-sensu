@@ -1,4 +1,5 @@
 ---
+# handlers file for sensu
 - name: restart sensu server
   service: name=sensu-{{ item }} state=restarted
   with_items:

@@ -1,28 +1,25 @@
-#Sensu playbook
+# Sensu
 
-Playbook to install and configure a Sensu. This is a work in progress, it will
-come with various configuration tweaking later on.
+Playbook to install and configure Sensu.
 
-##Supported system
+## Requirements
 
-Currently only Debian Jessie amd64 is supported and tested. Patch welcome to
-support other OS.
+Sensu does not have a strong dependency on others software (it come by default
+as an omnibus). But you will need a RabbitMQ server and a Redis server. They do
+not have to be on the same host as Sensu thought.
 
-##Installation
+## Supported system
 
-Just clone (or submodule) this repository under the name `sensu` in your
-`roles` directory. This file, `test.yml` and `Vagrantfile` will be ignored by
-ansible anyway.
+Currently only Debian Wheezie & Jessie amd64 are supported and tested. Patch
+welcome to support other OS.
 
-###Using it
+## Installation
 
-####Roles Dependancies
+Just use Galaxy:
 
-You will need this [RabbitMQ
-role](https://github.com/Mayeu/ansible-playbook-rabbitmq) and this [Redis
-role](https://github.com/Mayeu/ansible-playbook-redis).
+    $ ansible-galaxy install Mayeu.sensu
 
-####Variables
+## Role Variables
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
@@ -42,7 +39,7 @@ role](https://github.com/Mayeu/ansible-playbook-redis).
 `sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`''`
 `sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"false"`
 
-####Files
+## Files required
 
 You need to have the following files in your playbook `files/` folder:
 
@@ -60,10 +57,26 @@ files/
  |----- <all your .rb handler script>
 ```
 
-##Test
+## Dependencies
+
+Weak dependencies on:
+
+* Redis
+* RabbitMQ
+
+## Tests
 
 There is some really basic tests with the playbook. It just try to install a
 server with client, a server only, and a client only, on 3 VM:
 
     $ vagrant up
     $ export ANSIBLE_HOST_KEY_CHECKING=False; ansible-playbook -vv test.yml -i hosts -k
+
+The test depends on the following roles:
+
+* Mayeu.RabbitMQ
+* redis
+
+## License
+
+BSD

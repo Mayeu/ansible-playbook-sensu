@@ -13,7 +13,7 @@
     - include: tasks/main.yml
   roles:
     - redis
-    - rabbitmq
+    - Mayeu.RabbitMQ
   handlers:
     - include: handlers/main.yml
 
