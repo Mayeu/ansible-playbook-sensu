@@ -1,0 +1,3 @@
+---
+# Set the rabbitmq to listen only on ssl
+rabbitmq_conf_tcp_listeners_port: ''
