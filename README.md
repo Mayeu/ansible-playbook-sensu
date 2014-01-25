@@ -1,7 +1,7 @@
-#Sensu server playbook
+#Sensu playbook
 
-Playbook to install and configure a sensu-server. This is a work in progress,
-it will come with various configuration tweaking later on :)
+Playbook to install and configure a Sensu. This is a work in progress, it will
+come with various configuration tweaking later on.
 
 ##Supported system
 
@@ -24,26 +24,28 @@ role](https://github.com/Mayeu/ansible-playbook-redis).
 
 ####Variables
 
-You may need to redefine the following variables:
-
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
-`sensu_server_redis_host`|String|Hostname of the Redis server|"127.0.0.1"
-`sensu_server_api_host`|String|Adress of the Sensu API server|"127.0.0.1"
-`sensu_server_rabbitmq_hostname`|String|Hostname of the RabbitMQ server|"127.0.0.1"
-`sensu_server_rabbitmq_user`|String|Username to connect to RabbitMQ|"sensu"
-`sensu_server_rabbitmq_password`|String|Password to connect to RabbitMQ|"placeholder"
-`sensu_server_dashboard_password`|String|Password for the sensu dashboard|"placeholder"
-`sensu_server_dashboard_host`|String|Hostname of the Sensu Dashboard|"127.0.0.1"
-`sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|''
-`sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|''
-`sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|"false"
+`sensu_install_client`|Boolean|Determine if we need to install the client part|`true`
+`sensu_client_hostname`|String|Hostname of this client|`"localhost"`
+`sensu_client_address`|String|Address of this client|`"127.0.0.1"`
+`sensu_client_subscription_names`|List|List of test to execute on this client| `[test]`
+`sensu_server_redis_host`|String|Hostname of the Redis server|`"127.0.0.1"`
+`sensu_server_api_host`|String|Adress of the Sensu API server|`"127.0.0.1"`
+`sensu_server_rabbitmq_hostname`|String|Hostname of the RabbitMQ server|`"127.0.0.1"`
+`sensu_server_rabbitmq_user`|String|Username to connect to RabbitMQ|`"sensu"`
+`sensu_server_rabbitmq_password`|String|Password to connect to RabbitMQ|`"placeholder"`
+`sensu_server_dashboard_host`|String|Hostname of the Sensu Dashboard|`"127.0.0.1`"
+`sensu_server_dashboard_password`|String|Password for the sensu dashboard|`"placeholder"`
+`sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|`''`
+`sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`''`
+`sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"false"`
 
 ####Files
 
 You need to have the following files in your playbook `files/` folder:
 
-* SSL certificate for rabbitmq
+* SSL certificate for rabbitmq and Sensu
 * the handlers script needed
 
     files/
@@ -53,15 +55,16 @@ You need to have the following files in your playbook `files/` folder:
      |- sensu_client_cert.pem
      |- sensu_client_key.pem
      |- sensu/
+     |--- plugins/
+     |----- <all your .rb check script>
      |--- handlers/
      |----- <all your .rb handler script>
 
 
 ##Test
 
-There is some really basic tests with the playbook. It just try to install
-rabbitmq in a vagrant VM. Just run:
+There is some really basic tests with the playbook. It just try to install a
+server with client, a server only, and a client only, on 3 VM:
 
     $ vagrant up
-
-and the VM will be provisioned by ansible with the test.yml.
+    $ export ANSIBLE_HOST_KEY_CHECKING=False; ansible-playbook -vv test.yml -i hosts -k
