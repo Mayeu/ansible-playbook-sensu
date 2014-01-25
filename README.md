@@ -46,14 +46,11 @@ role](https://github.com/Mayeu/ansible-playbook-redis).
 
 You need to have the following files in your playbook `files/` folder:
 
-* SSL certificate for rabbitmq and Sensu
+* SSL certificate for Sensu
 * the handlers script needed
 
 ```
 files/
- |- rabbitmq_cacert.pem
- |- rabbitmq_server_cert.pem
- |- rabbitmq_server_key.pem
  |- sensu_client_cert.pem
  |- sensu_client_key.pem
  |- sensu/
