@@ -9,8 +9,9 @@
     "user": "{{ sensu_server_rabbitmq_user }}",
     "password": "{{sensu_server_rabbitmq_password}}",
     "vhost": "/sensu"
-  },
+  }
 {% if sensu_install_server %}
+  ,
   "redis": {
     "host": "{{ sensu_server_redis_host }}",
     "port": 6379
