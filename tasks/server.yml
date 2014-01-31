@@ -33,6 +33,7 @@
     mode=0750
   notify:
     - restart sensu server
+    - restart sensu client
 
 - name: generate /etc/sensu/conf.d/handlers.json
   template:
