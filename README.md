@@ -38,6 +38,7 @@ Just use Galaxy:
 `sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|`{}`
 `sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`{}`
 `sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"false"`
+`sensu_server_patch_init_scripts`|Boolean|Indicate if patched init scripts that start/stop rabbitmq-server/redis-server when the sensu server is started stopped. Disable this if your redis / rabbitmq servers are on different machines|`true`
 
 ## Files required
 
