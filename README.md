@@ -37,7 +37,7 @@ Just use Galaxy:
 `sensu_server_dashboard_password`|String|Password for the sensu dashboard|`"placeholder"`
 `sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|`''`
 `sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`''`
-`sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"false"`
+`sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"true"`
 
 ## Files required
 
