@@ -10,12 +10,14 @@
   with_items:
     - server
     - api
+  when: sensu_server_patch_init_scripts
 
 - name: ensure the patched init script are used
   command: /usr/sbin/update-rc.d sensu-{{ item }} remove && /usr/sbin/update-rc.d sensu-{{ item }} defaults
   with_items:
     - server
     - api
+  when: sensu_server_patch_init_scripts
 
 - name: enable sensu-{server,api,dashboard} to survive reboot
   service: name=sensu-{{ item }} enabled=yes
