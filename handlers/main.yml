@@ -5,7 +5,6 @@
   with_items:
     - server
     - api
-    - dashboard
   when: sensu_install_server
 
 - name: restart sensu client

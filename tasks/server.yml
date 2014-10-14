@@ -17,12 +17,11 @@
     - server
     - api
 
-- name: enable sensu-{server,api,dashboard} to survive reboot
+- name: enable sensu-{server,api} to survive reboot
   service: name=sensu-{{ item }} enabled=yes
   with_items:
     - server
     - api
-    - dashboard
 
 - name: generate /etc/sensu/conf.d/checks.json
   template:
