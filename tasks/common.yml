@@ -42,14 +42,16 @@
     - client_cert
     - client_key
 
-- name: generate /etc/sensu/config.json
+- name: generate /etc/sensu/conf.d/rabbitmq.json
   template:
-    src=sensu.config.json.j2
-    dest=/etc/sensu/config.json
+    src={{ item }}.json.j2
+    dest=/etc/sensu/conf.d/{{ item }}.json
     owner=sensu
     group=sensu
     mode=0640
     backup=yes
+  with_items:
+    - rabbitmq
   notify:
     - restart sensu server
     - restart sensu client
