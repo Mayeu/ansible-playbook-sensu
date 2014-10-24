@@ -51,5 +51,6 @@
     owner=sensu
     group=sensu
     mode=0750
+  ignore_errors: yes
   notify:
     - restart sensu server
