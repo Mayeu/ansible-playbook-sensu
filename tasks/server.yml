@@ -12,7 +12,7 @@
     - api
 
 - name: ensure the patched init script are used
-  command: /usr/sbin/update-rc.d sensu-{{ item }} remove && /usr/sbin/update-rc.d sensu-{{ item }} defaults
+  command: /usr/sbin/update-rc.d -f sensu-{{ item }} remove && /usr/sbin/update-rc.d sensu-{{ item }} defaults
   with_items:
     - server
     - api
