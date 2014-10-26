@@ -53,3 +53,23 @@
     mode=0750
   notify:
     - restart sensu server
+
+- name: copy extension files
+  copy:
+    src=files/sensu/extensions/
+    dest=/etc/sensu/extensions/
+    owner=sensu
+    group=sensu
+    mode=0750
+  notify:
+    - restart sensu server
+
+- name: copy conf.d files
+  copy:
+    src=files/sensu/conf.d/
+    dest=/etc/sensu/conf.d/
+    owner=sensu
+    group=sensu
+    mode=0640
+  notify:
+    - restart sensu server
