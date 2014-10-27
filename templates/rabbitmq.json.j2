@@ -1,6 +1,6 @@
 {
   "rabbitmq": {
-    {% if sensu_server_rabbitmq_ssl %}
+    {% if sensu_server_rabbitmq_ssl | bool %}
       "ssl": {
         "private_key_file": "/etc/sensu/ssl/client_key.pem",
         "cert_chain_file": "/etc/sensu/ssl/client_cert.pem"
