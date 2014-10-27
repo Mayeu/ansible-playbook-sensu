@@ -4,7 +4,7 @@
 
 - name: generate /etc/sensu/conf.d/client.json
   template:
-    src=sensu.client.json.j2
+    src=client.json.j2
     dest=/etc/sensu/conf.d/client.json
     owner=sensu
     group=sensu
