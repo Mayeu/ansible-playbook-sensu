@@ -8,3 +8,6 @@
 
 - include: client.yml
   when: sensu_install_client
+
+- include: uchiwa.yml
+  when: sensu_install_uchiwa

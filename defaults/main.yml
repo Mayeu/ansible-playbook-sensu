@@ -4,6 +4,7 @@
 # Variable to control the installation
 sensu_install_client: true
 sensu_install_server: true
+sensu_install_uchiwa: true
 
 # Sensu client variable
 sensu_client_hostname          : "localhost"
