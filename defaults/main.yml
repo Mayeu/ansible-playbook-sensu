@@ -26,5 +26,4 @@ sensu_server_rabbitmq_port    : "5671"
 sensu_server_rabbitmq_password: "placeholder"
 sensu_server_rabbitmq_ssl     : true
 
-sensu_server_dashboard_host    : "127.0.0.1"
 sensu_server_dashboard_password: "placeholder"

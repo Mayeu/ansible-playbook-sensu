@@ -23,7 +23,6 @@ sensu_server_rabbitmq_hostname: '192.168.60.2'
 sensu_server_rabbitmq_user    : "sensu"
 sensu_server_rabbitmq_password: "placeholder"
 
-sensu_server_dashboard_host    : "127.0.0.1"
 sensu_server_dashboard_password: "placeholder"
 
 # Dummy sensu_checks
@@ -40,4 +39,4 @@ sensu_handlers:
   test_handler:
     type   : pipe
     command: "echo"
- 
+
