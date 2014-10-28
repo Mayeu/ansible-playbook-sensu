@@ -11,6 +11,6 @@
     mode=0640
     backup=yes
   with_items:
-    client
-    checks
+    - client
+    - checks
   notify: restart sensu client
