@@ -30,7 +30,10 @@ Just use Galaxy:
 `sensu_client_subscription_names`|List|List of test to execute on this client| `[test]`
 `sensu_server_redis_host`|String|Hostname of the Redis server|`"127.0.0.1"`
 `sensu_server_api_host`|String|Adress of the Sensu API server|`"127.0.0.1"`
+`sensu_server_rabbitmq_vhost`|String|RabbitMQ virtual host|`"/sensu"`
 `sensu_server_rabbitmq_hostname`|String|Hostname of the RabbitMQ server|`"127.0.0.1"`
+`sensu_server_rabbitmq_port`|Integer|Port of the RabbitMQ server|`5672`
+`sensu_server_rabbitmq_ssl`|String|Enables SSL connection to RabbitMQ|`"false"`
 `sensu_server_rabbitmq_user`|String|Username to connect to RabbitMQ|`"sensu"`
 `sensu_server_rabbitmq_password`|String|Password to connect to RabbitMQ|`"placeholder"`
 `sensu_server_dashboard_password`|String|Password for the sensu dashboard|`"placeholder"`
