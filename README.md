@@ -36,7 +36,11 @@ Just use Galaxy:
 `sensu_server_rabbitmq_ssl`|String|Enables SSL connection to RabbitMQ|`"false"`
 `sensu_server_rabbitmq_user`|String|Username to connect to RabbitMQ|`"sensu"`
 `sensu_server_rabbitmq_password`|String|Password to connect to RabbitMQ|`"placeholder"`
-`sensu_server_dashboard_password`|String|Password for the sensu dashboard|`"placeholder"`
+`sensu_server_dashboard_host`|String|The address on which Uchiwa will listen|`"0.0.0.0"`
+`sensu_server_dashboard_port`|String|The port on which Uchiwa will listen|` "3000"`
+`sensu_server_dashboard_user`|String|The username of the Uchiwa dashboard|`"uchiwa"`
+`sensu_server_dashboard_password`|String|The password for the Uchiwa dashboard|`"placeholder"`
+`sensu_server_dashboard_refresh`|Integer|Determines the interval to pull the Sensu APIs, in seconds|`5`
 `sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|`''`
 `sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`''`
 `sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"true"`

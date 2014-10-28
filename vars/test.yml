@@ -25,7 +25,11 @@ sensu_server_rabbitmq_ssl: false
 sensu_server_rabbitmq_user    : "sensu"
 sensu_server_rabbitmq_password: "placeholder"
 
+sensu_server_dashboard_host: "0.0.0.0"
+sensu_server_dashboard_port: "3000"
+sensu_server_dashboard_user: "uchiwa"
 sensu_server_dashboard_password: "placeholder"
+sensu_server_dashboard_refresh: 5
 
 # Dummy sensu_checks
 sensu_checks:
