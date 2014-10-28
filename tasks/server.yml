@@ -31,11 +31,10 @@
     group=sensu
     mode=0750
   with_items:
-    - checks
     - handlers
     - redis
     - api
-    
+
   notify:
     - restart sensu server
     - restart sensu client
