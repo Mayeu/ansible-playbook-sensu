@@ -1,7 +1,7 @@
 - name: create uchiwa config file
   template:
     src=uchiwa.json.j2
-    dest=/etc/sensu/conf.d/uchiwa.json
+    dest=/etc/sensu/uchiwa.json
     owner=sensu
     group=sensu
     mode=0640
