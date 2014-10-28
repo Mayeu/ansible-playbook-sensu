@@ -29,4 +29,4 @@ sensu_server_rabbitmq_ssl     : false
 sensu_server_dashboard_user: "uchiwa"
 sensu_server_dashboard_password: "placeholder"
 sensu_server_dashboard_port: "3000"
-sensu_server_dashboard_refresh: 5
+sensu_server_dashboard_refresh: 5sensu_server_dashboard_refresh: 10000
