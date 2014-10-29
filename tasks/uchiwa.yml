@@ -1,3 +1,6 @@
+- name: install uchiwa
+  apt: name=uchiwa state=present
+
 - name: create uchiwa config file
   template:
     src=uchiwa.json.j2
