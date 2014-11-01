@@ -25,6 +25,8 @@ Just use Galaxy:
 |----|----|-----------|-------|
 `sensu_install_client`|Boolean|Determine if we need to install the client part|`true`
 `sensu_install_server`|Boolean|Determine if we need to install the server part|`true`
+`sensu_install_owner`|String|Set owner of installed files|`true`
+`sensu_install_group`|String|Set group of installed files|`true`
 `sensu_client_hostname`|String|Hostname of this client|`"localhost"`
 `sensu_client_address`|String|Address of this client|`"127.0.0.1"`
 `sensu_client_subscription_names`|List|List of test to execute on this client| `[test]`

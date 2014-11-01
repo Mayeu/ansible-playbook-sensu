@@ -5,6 +5,9 @@
 sensu_install_client: true
 sensu_install_server: true
 
+sensu_install_owner: sensu
+sensu_install_group: sensu
+
 # Sensu client variable
 sensu_client_hostname          : "localhost"
 sensu_client_address           : "127.0.0.1"

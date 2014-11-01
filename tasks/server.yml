@@ -27,8 +27,8 @@
   template:
     src=checks.json.j2
     dest=/etc/sensu/conf.d/checks.json
-    owner=sensu
-    group=sensu
+    owner="{{ sensu_install_owner }}"
+    group="{{ sensu_install_group }}"
     mode=0750
   notify:
     - restart sensu server
@@ -38,8 +38,8 @@
   template:
     src=handlers.json.j2
     dest=/etc/sensu/conf.d/handlers.json
-    owner=sensu
-    group=sensu
+    owner="{{ sensu_install_owner }}"
+    group="{{ sensu_install_group }}"
     mode=0750
   notify:
     - restart sensu server
@@ -48,8 +48,8 @@
   copy:
     src=files/sensu/handlers/
     dest=/etc/sensu/handlers/
-    owner=sensu
-    group=sensu
+    owner="{{ sensu_install_owner }}"
+    group="{{ sensu_install_group }}"
     mode=0750
   notify:
     - restart sensu server
