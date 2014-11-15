@@ -4,9 +4,18 @@ rabbitmq_conf_ssl_listeners_address: '0.0.0.0'
 
 # Set the rabbitmq vhost
 rabbitmq_vhost_definitions:
-  - vhost   : sensu
+  - name    : sensu
     user    : sensu
     password: placeholder
+
+rabbitmq_users_definitions:
+  - vhost:    sensu
+    user:     sensu
+    password: placeholder
+
+rabbitmq_cacert : "files/rabbitmq_cacert.pem"
+rabbitmq_server_key : "files/rabbitmq_server_key.pem"
+rabbitmq_server_cert: "files/rabbitmq_server_cert.pem"
 
 # Sensu client variable
 sensu_client_subscription_names:
@@ -40,4 +49,3 @@ sensu_handlers:
   test_handler:
     type   : pipe
     command: "echo"
- 

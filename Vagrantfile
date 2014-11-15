@@ -1,4 +1,16 @@
 Vagrant.configure("2") do |config|
+
+  config.vm.provision 'ansible' do |ansible|
+    ansible.playbook = 'vagrant/site.yml'
+    ansible.sudo = true
+    ansible.host_key_checking = false
+    ansible.groups = {
+      "sensu_server_client" => ["sensu-server-client"],
+      "sensu_server"        => ["sensu-server"],
+      "sensu_client"        => ["sensu-client"]
+    }
+  end
+
   config.vm.define 'sensu-server-client' do |a|
     a.vm.box = "deb/jessie"
     a.vm.network :private_network, ip: "192.168.60.2"

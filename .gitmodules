@@ -1,0 +1,6 @@
+[submodule "vagrant/roles/Mayeu.RabbitMQ"]
+	path = vagrant/roles/Mayeu.RabbitMQ
+	url = https://github.com/Mayeu/ansible-playbook-rabbitmq
+[submodule "vagrant/roles/redis"]
+	path = vagrant/roles/redis
+	url = https://github.com/Mayeu/ansible-playbook-redis

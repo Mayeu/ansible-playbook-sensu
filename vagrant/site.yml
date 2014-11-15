@@ -1,48 +1,37 @@
 ---
 - hosts: sensu_server_client
   user: vagrant
-  sudo: yes
   vars:
     - sensu_install_server: true
     - sensu_install_client: true
     - sensu_client_hostname: "sensu-server-client"
     - sensu_client_address: "192.168.60.2"
   vars_files:
-    - vars/test.yml
-  tasks:
-    - include: tasks/main.yml
+    - test-vars.yml
   roles:
     - redis
     - Mayeu.RabbitMQ
-  handlers:
-    - include: handlers/main.yml
+    - sensu
 
 - hosts: sensu_server
   user: vagrant
-  sudo: yes
   vars:
     - sensu_install_server: true
     - sensu_install_client: false
   vars_files:
-    - vars/test.yml
+    - test-vars.yml
   roles:
     - redis
-  tasks:
-    - include: tasks/main.yml
-  handlers:
-    - include: handlers/main.yml
+    - sensu
 
 - hosts: sensu_client
   user: vagrant
-  sudo: yes
   vars:
     - sensu_install_server: false
     - sensu_install_client: true
     - sensu_client_hostname: "sensu-client"
     - sensu_client_address: "192.168.60.4"
   vars_files:
-    - vars/test.yml
-  tasks:
-    - include: tasks/main.yml
-  handlers:
-    - include: handlers/main.yml
+    - test-vars.yml
+  roles:
+    - sensu
