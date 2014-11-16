@@ -22,6 +22,12 @@
     regexp=^EMBEDDED_RUBY=
     line=EMBEDDED_RUBY={{ sensu_server_embedded_ruby }}
 
+- name: set which user to use
+  lineinfile:
+    dest=/etc/default/sensu
+    regexp=^USER=
+    line=USER={{ sensu_install_owner }}
+
 - name: create the SSL directory
   file:
     path=/etc/sensu/ssl
