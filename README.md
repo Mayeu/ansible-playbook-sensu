@@ -51,10 +51,14 @@ files/
  |- sensu_client_cert.pem
  |- sensu_client_key.pem
  |- sensu/
+ |--- conf.d/
+ |----- <all your configuration files>
  |--- plugins/
- |----- <all your .rb check script>
+ |----- <all your check script>
  |--- handlers/
- |----- <all your .rb handler script>
+ |----- <all your handler script>
+ |--- extensions/
+ |----- <all your extension script>
 ```
 
 ## Dependencies
