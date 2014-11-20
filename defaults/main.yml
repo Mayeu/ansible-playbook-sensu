@@ -5,8 +5,8 @@
 sensu_install_client: true
 sensu_install_server: true
 
-sensu_install_owner: sensu
-sensu_install_group: sensu
+sensu_user:  sensu
+sensu_group: sensu
 
 # Sensu client variable
 sensu_client_hostname          : "localhost"
