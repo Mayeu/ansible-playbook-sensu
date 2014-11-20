@@ -25,8 +25,8 @@
 - name: create the SSL directory
   file:
     path=/etc/sensu/ssl
-    owner=sensu
-    group=sensu
+    owner="{{ sensu_user }}"
+    group="{{ sensu_group }}"
     mode=0750
     state=directory
 
@@ -34,8 +34,8 @@
   copy:
     src=files/sensu_{{ item }}.pem
     dest=/etc/sensu/ssl/{{ item }}.pem
-    owner=sensu
-    group=sensu
+    owner="{{ sensu_user }}"
+    group="{{ sensu_group }}"
     mode=0640
     backup=yes
   with_items:
@@ -46,8 +46,8 @@
   template:
     src=sensu.config.json.j2
     dest=/etc/sensu/config.json
-    owner=sensu
-    group=sensu
+    owner="{{ sensu_user }}"
+    group="{{ sensu_group }}"
     mode=0640
     backup=yes
   notify:

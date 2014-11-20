@@ -6,8 +6,8 @@
   template:
     src=sensu.client.json.j2
     dest=/etc/sensu/conf.d/client.json
-    owner=sensu
-    group=sensu
+    owner="{{ sensu_user }}"
+    group="{{ sensu_group }}"
     mode=0640
     backup=yes
   notify: restart sensu client
@@ -16,8 +16,8 @@
   copy:
     src=files/sensu/plugins/
     dest=/etc/sensu/plugins/
-    owner=sensu
-    group=sensu
+    owner="{{ sensu_user }}"
+    group="{{ sensu_group }}"
     mode=0750
   notify:
     - restart sensu client
