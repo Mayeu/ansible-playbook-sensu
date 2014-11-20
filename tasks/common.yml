@@ -26,7 +26,7 @@
   lineinfile:
     dest=/etc/default/sensu
     regexp=^USER=
-    line=USER={{ sensu_install_owner }}
+    line=USER={{ sensu_user }}
 
 - name: create the SSL directory
   file:
