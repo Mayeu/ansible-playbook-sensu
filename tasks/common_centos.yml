@@ -1,0 +1,8 @@
+---
+- name: add the official Sensu Yum repository
+  copy: src=sensu.repo
+        dest=/etc/yum.repos.d/sensu.repo
+        backup=yes
+
+- name: install sensu
+  yum: name=sensu state=present
