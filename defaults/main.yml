@@ -13,6 +13,7 @@ sensu_client_hostname          : "localhost"
 sensu_client_address           : "127.0.0.1"
 sensu_client_subscription_names:
   - test
+sensu_client_custom_values: {}
 
 # Sensu Server variable
 sensu_server_redis_host: "127.0.0.1"
