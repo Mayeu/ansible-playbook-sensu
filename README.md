@@ -10,8 +10,8 @@ not have to be on the same host as Sensu thought.
 
 ## Supported system
 
-Currently only Debian Wheezie & Jessie amd64 are supported and tested. Patch
-welcome to support other OS.
+Currently only Debian Wheezie & Jessie amd64 and CentOS 7 x86_64 are supported and tested.
+Patch welcome to support other OS.
 
 ## Installation
 
