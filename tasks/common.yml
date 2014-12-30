@@ -38,15 +38,15 @@
 
 - name: copy the SSL certificate & key
   copy:
-    src=files/sensu_{{ item }}.pem
+    src={{ sensu_cert_dir }}/{{ item }}.pem
     dest=/etc/sensu/ssl/{{ item }}.pem
     owner="{{ sensu_user }}"
     group="{{ sensu_group }}"
     mode=0640
     backup=yes
   with_items:
-    - client_cert
-    - client_key
+    - "{{ sensu_cert_file_name }}"
+    - "{{ sensu_key_file_name }}"
 
 - name: generate /etc/sensu/config.json
   template:

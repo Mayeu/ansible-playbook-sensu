@@ -28,3 +28,8 @@ sensu_server_rabbitmq_password: "placeholder"
 
 sensu_server_dashboard_host    : "127.0.0.1"
 sensu_server_dashboard_password: "placeholder"
+
+# Sensu keys
+sensu_cert_dir: files
+sensu_cert_file_name: sencu_client_cert
+sensu_key_file_name: sencu_client_key
