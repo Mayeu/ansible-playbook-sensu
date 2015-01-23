@@ -19,12 +19,6 @@
     - api
   when: sensu_server_patch_init_scripts
 
-- name: enable sensu-{server,api} to survive reboot
-  service: name=sensu-{{ item }} enabled=yes
-  with_items:
-    - server
-    - api
-
 - name: copy the handlers files
   copy:
     src=files/sensu/handlers/
@@ -68,3 +62,12 @@
     - checks
   notify:
     - restart sensu server
+
+- name: Start sensu-{server,api} and make it survive a reboot
+  service:
+    name=sensu-{{ item }}
+    enabled=yes
+    state=started
+  with_items:
+    - server
+    - api

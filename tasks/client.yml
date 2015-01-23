@@ -1,7 +1,4 @@
 ---
-- name: enable sensu-client to survive reboot
-  service: name=sensu-client enabled=yes
-
 - name: copy all the checks files
   copy:
     src=files/sensu/plugins/
@@ -18,4 +15,11 @@
     group=sensu
     mode=0640
     backup=yes
-  notify: restart sensu client
+  notify:
+    - restart sensu client
+
+- name: enable sensu-client to survive reboot
+  service:
+    name=sensu-client
+    enabled=yes
+    state=started

@@ -2,9 +2,6 @@
 - name: install uchiwa
   apt: name=uchiwa state=present
 
-- name: enable uchiwa to survive reboot
-  service: name=uchiwa enabled=yes
-
 - name: create uchiwa config file
   template:
     src=uchiwa.json.j2
@@ -15,3 +12,9 @@
     backup=yes
   notify:
     - restart uchiwa service
+
+- name: Start uchiwa and make it survive a reboot
+  service:
+    name=uchiwa
+    enabled=yes
+    state=started
