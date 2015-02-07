@@ -1,6 +1,7 @@
 ---
-- name: add the official Sensu repository's key
+- name: add the official Sensu repository key
   apt_key: url=http://repos.sensuapp.org/apt/pubkey.gpg state=present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: add the official Sensu repository
   copy:
@@ -8,13 +9,23 @@
     dest=/etc/apt/sources.list.d/
     backup=yes
   register: aptrepo
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: refresh apt cache
   apt: update_cache=yes
-  when: aptrepo.changed
+  when: aptrepo.changed and (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
 
 - name: install sensu
   apt: name=sensu state=present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: add the official Sensu repository
+  copy: src=sensu.repo dest=/etc/yum.repos.d/sensu.repo
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: install sensu
+  yum: name=sensu state=present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: set which Ruby to use
   lineinfile:
@@ -36,17 +47,17 @@
     mode=0750
     state=directory
 
-- name: copy the SSL certificate & key
+- name: copy the client cert and key
   copy:
-    src=files/sensu_{{ item }}.pem
+    src=client_{{ item }}.pem
     dest=/etc/sensu/ssl/{{ item }}.pem
     owner="{{ sensu_user }}"
     group="{{ sensu_group }}"
     mode=0640
     backup=yes
   with_items:
-    - client_cert
-    - client_key
+    - cert
+    - key
 
 - name: generate /etc/sensu/config.json
   template:

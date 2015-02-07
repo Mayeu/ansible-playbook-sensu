@@ -10,12 +10,14 @@
   with_items:
     - server
     - api
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: ensure the patched init script are used
   command: /usr/sbin/update-rc.d sensu-{{ item }} remove && /usr/sbin/update-rc.d sensu-{{ item }} defaults
   with_items:
     - server
     - api
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: enable sensu-{server,api} to survive reboot
   service: name=sensu-{{ item }} enabled=yes
@@ -46,7 +48,7 @@
 
 - name: copy the handlers files
   copy:
-    src=files/sensu/handlers/
+    src=sensu/handlers/
     dest=/etc/sensu/handlers/
     owner="{{ sensu_user }}"
     group="{{ sensu_group }}"
@@ -56,7 +58,7 @@
 
 - name: copy extension files
   copy:
-    src=files/sensu/extensions/
+    src=sensu/extensions/
     dest=/etc/sensu/extensions/
     owner=sensu
     group=sensu
@@ -66,7 +68,7 @@
 
 - name: copy conf.d files
   copy:
-    src=files/sensu/conf.d/
+    src=sensu/conf.d/
     dest=/etc/sensu/conf.d/
     owner=sensu
     group=sensu

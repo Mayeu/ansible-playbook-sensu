@@ -50,8 +50,8 @@ You need to have the following files in your playbook `files/` folder:
 
 ```
 files/
- |- sensu_client_cert.pem
- |- sensu_client_key.pem
+ |- client_cert.pem
+ |- client_key.pem
  |- sensu/
  |--- conf.d/
  |----- <all your configuration files>
