@@ -1,2 +1,5 @@
 .*.sw*
 .vagrant/
+files/client_cert.pem
+files/client_key.pem
+
