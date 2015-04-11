@@ -37,9 +37,10 @@ Just use Galaxy:
 `sensu_server_rabbitmq_password`|String|Password to connect to RabbitMQ|`"placeholder"`
 `sensu_server_dashboard_host`|String|Hostname of the Sensu Dashboard|`"127.0.0.1`"
 `sensu_server_dashboard_password`|String|Password for the sensu dashboard|`"placeholder"`
-`sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|`''`
-`sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`''`
+`sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|`{}`
+`sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`{}`
 `sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"true"`
+`sensu_server_patch_init_scripts`|Boolean|Indicate if patched init scripts that start/stop rabbitmq-server/redis-server when the sensu server is started stopped. Disable this if your redis / rabbitmq servers are on different machines|`true`
 
 ## Files required
 
