@@ -29,7 +29,7 @@ sensu_server_rabbitmq_password: "placeholder"
 sensu_server_dashboard_host    : "127.0.0.1"
 sensu_server_dashboard_password: "placeholder"
 
-sensu_checks: {}
-sensu_handlers: {}
+sensu_checks: []
+sensu_handlers: []
 
 sensu_server_patch_init_scripts: true
