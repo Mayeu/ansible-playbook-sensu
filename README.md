@@ -19,6 +19,12 @@ Just use Galaxy:
 
     $ ansible-galaxy install Mayeu.sensu
 
+## Expectation
+
+RabbitMQ is expecting to listen on its TLS port (`5671`). If your
+server is setup otherwise, you'll have to change the
+`sensu_server_rabbitmq_port` variable.
+
 ## Role Variables
 
 |Name|Type|Description|Default|
@@ -30,6 +36,8 @@ Just use Galaxy:
 `sensu_client_subscription_names`|List|List of test to execute on this client| `[test]`
 `sensu_server_redis_host`|String|Hostname of the Redis server|`"127.0.0.1"`
 `sensu_server_api_host`|String|Adress of the Sensu API server|`"127.0.0.1"`
+`sensu_server_api_user`|String|User to connect to the api|`"sensu"`
+`sensu_server_api_password`|String|Password for the api user|`"placeholder"`
 `sensu_server_rabbitmq_vhost`|String|RabbitMQ virtual host|`"/sensu"`
 `sensu_server_rabbitmq_hostname`|String|Hostname of the RabbitMQ server|`"127.0.0.1"`
 `sensu_server_rabbitmq_port`|Integer|Port of the RabbitMQ server|`5672`

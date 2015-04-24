@@ -23,6 +23,14 @@
     - server
     - api
 
+- name: copy the handlers files
+  copy:
+    src=files/sensu/handlers/
+    dest=/etc/sensu/handlers/
+    owner=sensu
+    group=sensu
+    mode=0750
+
 - name: generate config files
   template:
     src={{ item }}.json.j2
@@ -35,7 +43,5 @@
     - redis
     - api
     - settings
-
   notify:
     - restart sensu server
-    - restart sensu client

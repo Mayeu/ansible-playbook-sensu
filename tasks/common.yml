@@ -29,7 +29,7 @@
     group=sensu
     mode=0750
     state=directory
-  when: sensu_server_rabbitmq_ssl
+  when: !sensu_server_rabbitmq_insecure
 
 - name: copy the SSL certificate & key
   copy:
@@ -42,7 +42,7 @@
   with_items:
     - client_cert
     - client_key
-  when: sensu_server_rabbitmq_ssl
+  when: !sensu_server_rabbitmq_insecure
 
 - name: generate rabbitmq.json
   template:
