@@ -5,8 +5,10 @@
 
 ### BEGIN INIT INFO
 # Provides:       sensu-server
-# Required-Start: $remote_fs $network rabbitmq-server
-# Required-Stop:  $remote_fs $network rabbitmq-server
+# Required-Start: $remote_fs $network
+# Required-Stop:  $remote_fs $network
+# Should-Start:   rabbitmq-server redis-server
+# Should-Stop:    rabbitmq-server redis-server
 # Default-Start:  2 3 4 5
 # Default-Stop:   0 1 6
 # Description:    Sensu monitoring framework server

@@ -5,8 +5,10 @@
 
 ### BEGIN INIT INFO
 # Provides:       sensu-api
-# Required-Start: $remote_fs $network redis-server
-# Required-Stop:  $remote_fs $network redis-server
+# Required-Start: $remote_fs $network
+# Required-Stop:  $remote_fs $network
+# Should-Start:   redis-server
+# Should-Stop:    redis-server
 # Default-Start:  2 3 4 5
 # Default-Stop:   0 1 6
 # Description:    Sensu monitoring framework api
