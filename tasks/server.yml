@@ -25,36 +25,13 @@
     - server
     - api
 
-- name: generate /etc/sensu/conf.d/checks.json
-  template:
-    src=checks.json.j2
-    dest=/etc/sensu/conf.d/checks.json
-    owner="{{ sensu_user }}"
-    group="{{ sensu_group }}"
-    mode=0750
-  notify:
-    - restart sensu server
-    - restart sensu client
-
-- name: generate /etc/sensu/conf.d/handlers.json
-  template:
-    src=handlers.json.j2
-    dest=/etc/sensu/conf.d/handlers.json
-    owner="{{ sensu_user }}"
-    group="{{ sensu_group }}"
-    mode=0750
-  notify:
-    - restart sensu server
-
 - name: copy the handlers files
   copy:
     src=files/sensu/handlers/
     dest=/etc/sensu/handlers/
-    owner="{{ sensu_user }}"
-    group="{{ sensu_group }}"
+    owner=sensu
+    group=sensu
     mode=0750
-  notify:
-    - restart sensu server
 
 - name: copy extension files
   copy:
@@ -66,12 +43,28 @@
   notify:
     - restart sensu server
 
-- name: copy conf.d files
+- name: copy plugins files
   copy:
-    src=files/sensu/conf.d/
-    dest=/etc/sensu/conf.d/
+    src=files/sensu/plugins/
+    dest=/etc/sensu/plugins/
+    owner=sensu
+    group=sensu
+    mode=0750
+  notify:
+    - restart sensu server
+
+- name: generate config files
+  template:
+    src={{ item }}.json.j2
+    dest=/etc/sensu/conf.d/{{ item }}.json
     owner=sensu
     group=sensu
     mode=0640
+  with_items:
+    - handlers
+    - redis
+    - api
+    - settings
+    - checks
   notify:
     - restart sensu server

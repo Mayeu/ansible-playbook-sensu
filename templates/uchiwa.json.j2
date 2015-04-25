@@ -1,0 +1,20 @@
+{
+  "sensu": [
+    {
+      "name": "Sensu",
+      "host": "{{ sensu_server_api_host }}",
+      "port": {{ sensu_server_api_port }},
+      "user": "{{ sensu_server_api_user }}",
+      "pass": "{{ sensu_server_api_password }}",
+      "path": "",
+      "timeout": 5000
+    }
+  ],
+  "uchiwa": {
+    "host": "{{ sensu_server_dashboard_host }}",
+    "port": {{ sensu_server_dashboard_port }},
+    "user": "{{ sensu_server_dashboard_user }}",
+    "pass": "{{ sensu_server_dashboard_password }}",
+    "refresh": {{ sensu_server_dashboard_refresh }}
+  }
+}

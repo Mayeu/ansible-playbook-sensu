@@ -4,36 +4,24 @@ rabbitmq_conf_ssl_listeners_address: '0.0.0.0'
 
 # Set the rabbitmq vhost
 rabbitmq_vhost_definitions:
-  - name    : sensu
-    user    : sensu
-    password: placeholder
+  - name:     "{{ sensu_server_rabbitmq_vhost }}"
 
 rabbitmq_users_definitions:
-  - vhost:    sensu
-    user:     sensu
-    password: placeholder
+  - vhost:    "{{ sensu_server_rabbitmq_vhost }}"
+    user:     "{{ sensu_server_rabbitmq_user }}"
+    password: "{{ sensu_server_rabbitmq_password }}"
 
-rabbitmq_cacert : "files/rabbitmq_cacert.pem"
-rabbitmq_server_key : "files/rabbitmq_server_key.pem"
+rabbitmq_cacert :     "files/rabbitmq_cacert.pem"
+rabbitmq_server_key:  "files/rabbitmq_server_key.pem"
 rabbitmq_server_cert: "files/rabbitmq_server_cert.pem"
 
 # Sensu client variable
 sensu_client_subscription_names:
   - test
 
-# Sensu Server variable
-sensu_server_redis_host: "127.0.0.1"
-
-sensu_server_api_host: "127.0.0.1"
-
 sensu_server_embedded_ruby: "true"
 
 sensu_server_rabbitmq_hostname: '192.168.60.2'
-sensu_server_rabbitmq_user    : "sensu"
-sensu_server_rabbitmq_password: "placeholder"
-
-sensu_server_dashboard_host    : "127.0.0.1"
-sensu_server_dashboard_password: "placeholder"
 
 # Dummy sensu_checks
 sensu_checks:

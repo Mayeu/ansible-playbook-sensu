@@ -35,6 +35,7 @@
     group="{{ sensu_group }}"
     mode=0750
     state=directory
+  when: not sensu_server_rabbitmq_insecure
 
 - name: copy the SSL certificate & key
   copy:
@@ -47,13 +48,17 @@
   with_items:
     - client_cert
     - client_key
+  when: not sensu_server_rabbitmq_insecure
+  notify:
+    - restart sensu server
+    - restart sensu client
 
-- name: generate /etc/sensu/config.json
+- name: generate rabbitmq.json
   template:
-    src=sensu.config.json.j2
-    dest=/etc/sensu/config.json
-    owner="{{ sensu_user }}"
-    group="{{ sensu_group }}"
+    src=rabbitmq.json.j2
+    dest=/etc/sensu/conf.d/rabbitmq.json
+    owner=sensu
+    group=sensu
     mode=0640
     backup=yes
   notify:

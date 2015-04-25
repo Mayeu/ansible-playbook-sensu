@@ -10,3 +10,7 @@
 - name: restart sensu client
   service: name=sensu-client state=restarted
   when: sensu_install_client
+
+- name: restart uchiwa service
+  service: name=uchiwa state=restarted
+  when: sensu_install_uchiwa
