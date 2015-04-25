@@ -19,8 +19,6 @@ rabbitmq_server_cert: "files/rabbitmq_server_cert.pem"
 sensu_client_subscription_names:
   - test
 
-sensu_server_embedded_ruby: "true"
-
 sensu_server_rabbitmq_hostname: '192.168.60.2'
 
 # Dummy sensu_checks

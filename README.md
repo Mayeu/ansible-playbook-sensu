@@ -21,21 +21,92 @@ Just use Galaxy:
 
 ## Expectation
 
-RabbitMQ is expecting to listen on its TLS port (`5671`). If your
-server is setup otherwise, you'll have to change the
-`sensu_server_rabbitmq_port` variable.
+RabbitMQ is expected to be listening on its TLS port (`5671`). If your server
+is setup otherwise, you'll have to change the `sensu_server_rabbitmq_port`
+variable.
+
+This also mean that you will need to have the client certificate for your
+RabbitMQ server in your `files/` folder:
+
+```
+files/
+ ├── sensu_client_cert.pem
+ └── sensu_client_key.pem
+```
+
+Note that you can find a complete set of certificates and keys in
+`vagrant/files/` for **test purpose only**. Be smart, don't use certificates &
+keys publicly available in production!
+
+The playbook also expect that you have the following folder organisation for
+Sensu script in your `files/` folder:
+
+```
+files/
+ └── sensu/
+     ├── plugins/
+     ├── handlers/
+     └── extensions/
+```
+
+This follow the organisation of the Sensu community plugins repository.
+
+## Configuration organisation
+
+The configuration of Sensu does not uses the `/etc/sensu/config.json` file
+anymore, but split all the files in the `/etc/sensu/conf.d` folder:
+
+```
+/etc/sensu
+└── conf.d
+    ├── api.json
+    ├── checks.json
+    ├── client.json
+    ├── handlers.json
+    ├── rabbitmq.json
+    ├── redis.json
+    └── settings.json
+```
+
+All those files are created from a template, that use the variable you'll setup
+for your playbook. See [Role Variables](#role-variables).
+
+If you have custom key/value you want to add to your client configuration,
+please uses the `sensu_settings` variable, that will generate the
+`settings.json` file.
 
 ## Role Variables
+
+### Behaviour variables
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
 `sensu_install_client`|Boolean|Determine if we need to install the client part|`true`
 `sensu_install_server`|Boolean|Determine if we need to install the server part|`true`
+
+### General variables
+
+|Name|Type|Description|Default|
+|----|----|-----------|-------|
+`sensu_settings`|Hash|Custom key => value you want to add to your configuration|`{}`
 `sensu_user`|String|The user running sensu|`sensu`
 `sensu_group`|String|the group running sensu|`sensu`
+`sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|`[]`
+`sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`[]`
+`sensu_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"true"`
+
+### Client variables
+
+|Name|Type|Description|Default|
+|----|----|-----------|-------|
 `sensu_client_hostname`|String|Hostname of this client|`"localhost"`
 `sensu_client_address`|String|Address of this client|`"127.0.0.1"`
 `sensu_client_subscription_names`|List|List of test to execute on this client| `[test]`
+
+### Server variables
+
+|Name|Type|Description|Default|
+|----|----|-----------|-------|
 `sensu_server_redis_host`|String|Hostname of the Redis server|`"127.0.0.1"`
 `sensu_server_api_host`|String|Adress of the Sensu API server|`"127.0.0.1"`
 `sensu_server_api_host`|String|Port of the Sensu API server|`4567`
@@ -52,30 +123,7 @@ server is setup otherwise, you'll have to change the
 `sensu_server_dashboard_user`|String|The username of the Uchiwa dashboard|`"uchiwa"`
 `sensu_server_dashboard_password`|String|The password for the Uchiwa dashboard|`"placeholder"`
 `sensu_server_dashboard_refresh`|Integer|Determines the interval to pull the Sensu APIs, in seconds|`5`
-`sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|`[]`
-`sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`[]`
-`sensu_server_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"true"`
 `sensu_server_patch_init_scripts`|Boolean|Indicate if patched init scripts that start/stop rabbitmq-server/redis-server when the sensu server is started stopped. Disable this if your redis / rabbitmq servers are on different machines|`true`
-
-## Files required
-
-You need to have the following files in your playbook `files/` folder:
-
-* SSL certificate for Sensu
-* the handlers script needed
-
-```
-files/
- |- sensu_client_cert.pem
- |- sensu_client_key.pem
- |- sensu/
- |--- plugins/
- |----- <all your check script>
- |--- handlers/
- |----- <all your handler script>
- |--- extensions/
- |----- <all your extension script>
-```
 
 ## Dependencies
 
@@ -90,13 +138,26 @@ There is some really basic tests with the playbook. It just try to install a
 server with client, a server only, and a client only, on 3 VM:
 
     $ vagrant up
-    $ export ANSIBLE_HOST_KEY_CHECKING=False; ansible-playbook -vv test.yml -i hosts -k
 
-The test depends on the following roles:
+The test depends on the following roles (that are already present in the
+`vagrant/roles` folder):
 
 * Mayeu.RabbitMQ
 * redis
 
+
 ## License
 
 BSD
+
+## Author Information
+
+Original author: Matthieu Maury, [https://6x9.fr](https://6x9.fr).
+
+Contributor to the playbook:
+- [Jeremy Johnson](https://github.com/jeremyajohnson)
+- [Bob Renwick](https://github.com/bobbyrenwick)
+- [rob](https://github.com/roobert)
+- [Jennifer Blight](https://github.com/jgblight)
+- [Andrii Kostenko](https://github.com/gugu)
+- [scottginger](https://github.com/scottginger)

@@ -20,7 +20,7 @@
   lineinfile:
     dest=/etc/default/sensu
     regexp=^EMBEDDED_RUBY=
-    line=EMBEDDED_RUBY={{ sensu_server_embedded_ruby }}
+    line=EMBEDDED_RUBY={{ sensu_embedded_ruby }}
 
 - name: set which user to use
   lineinfile:

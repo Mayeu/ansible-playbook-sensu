@@ -11,6 +11,8 @@ sensu_group: sensu
 
 sensu_settings: {}
 
+sensu_embedded_ruby: "true"
+
 # Sensu client variable
 sensu_client_hostname:           "localhost"
 sensu_client_address:            "127.0.0.1"
@@ -23,8 +25,6 @@ sensu_server_api_host:     "127.0.0.1"
 sensu_server_api_port:     4567
 sensu_server_api_user:     "sensu"
 sensu_server_api_password: "placeholder"
-
-sensu_server_embedded_ruby: "true"
 
 sensu_server_rabbitmq_vhost:    "/sensu"
 sensu_server_rabbitmq_hostname: "127.0.0.1"
