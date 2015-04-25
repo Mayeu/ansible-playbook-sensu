@@ -36,7 +36,8 @@ files/
 
 Note that you can find a complete set of certificates and keys in
 `vagrant/files/` for **test purpose only**. Be smart, don't use certificates &
-keys publicly available in production!
+keys publicly available in production! You can also customize this path, see
+[Roles Variables](#roles-variables).
 
 The playbook also expect that you have the following folder organisation for
 Sensu script in your `files/` folder:
@@ -83,6 +84,7 @@ please uses the `sensu_settings` variable, that will generate the
 |----|----|-----------|-------|
 `sensu_install_client`|Boolean|Determine if we need to install the client part|`true`
 `sensu_install_server`|Boolean|Determine if we need to install the server part|`true`
+`sensu_install_uchiwa`|Boolean|Determine if we need to install the uchiwa. Will only work in `sensu_install_server` is also true|`true`
 
 ### General variables
 
@@ -94,6 +96,9 @@ please uses the `sensu_settings` variable, that will generate the
 `sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|`[]`
 `sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`[]`
 `sensu_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"true"`
+`sensu_cert_dir`|String|Directory to look for the certificates|`files`
+`sensu_cert_file_name`|String|Filename of the client certificate|`sensu_client_cert.pem`
+`sensu_key_file_name`|String|Filename of the client key|`sensu_client_key.pem`
 
 ### Client variables
 
