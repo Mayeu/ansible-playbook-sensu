@@ -13,6 +13,11 @@ sensu_settings: {}
 
 sensu_embedded_ruby: "true"
 
+# Sensu Certificates
+sensu_cert_dir:       files
+sensu_cert_file_name: sensu_client_cert.pem
+sensu_key_file_name:  sensu_client_key.pem
+
 # Sensu client variable
 sensu_client_hostname:           "localhost"
 sensu_client_address:            "127.0.0.1"
@@ -45,3 +50,5 @@ sensu_checks:   []
 sensu_handlers: []
 
 sensu_server_patch_init_scripts: true
+
+

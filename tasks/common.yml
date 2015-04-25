@@ -39,15 +39,15 @@
 
 - name: copy the SSL certificate & key
   copy:
-    src=files/sensu_{{ item }}.pem
-    dest=/etc/sensu/ssl/{{ item }}.pem
+    src={{ sensu_cert_dir }}/{{ item }}
+    dest=/etc/sensu/ssl/{{ item }}
     owner="{{ sensu_user }}"
     group="{{ sensu_group }}"
     mode=0640
     backup=yes
   with_items:
-    - client_cert
-    - client_key
+    - "{{ sensu_cert_file_name }}"
+    - "{{ sensu_key_file_name }}"
   when: not sensu_server_rabbitmq_insecure
   notify:
     - restart sensu server
