@@ -17,7 +17,14 @@
   with_items:
     - server
     - api
-  when: sensu_server_patch_init_scripts
+  when: sensu_server_patch_init_scripts and ansible_os_family == 'Debian'
+
+- name: ensure the patched init script are used (RedHat)
+  shell: /sbin/chkconfig --del sensu-{{ item }} && /sbin/chkconfig --add sensu-{{ item }}
+  with_items:
+    - server
+    - api
+  when: sensu_server_patch_init_scripts and ansible_os_family == 'RedHat'
 
 - name: enable sensu-{server,api} to survive reboot
   service: name=sensu-{{ item }} enabled=yes
