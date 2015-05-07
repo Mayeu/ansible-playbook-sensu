@@ -1,0 +1,2 @@
+---
+- fail: msg="Only debian and redhat based distros are currently supported. Detected {{ ansible_os_family }}."

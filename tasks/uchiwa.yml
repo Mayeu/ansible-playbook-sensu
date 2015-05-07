@@ -1,6 +1,11 @@
 ---
 - name: install uchiwa
   apt: name=uchiwa state=present
+  when: ansible_os_family == 'Debian'
+
+- name: install uchiwa
+  yum: name=uchiwa state=present
+  when: ansible_os_family == 'RedHat'
 
 - name: enable uchiwa to survive reboot
   service: name=uchiwa enabled=yes

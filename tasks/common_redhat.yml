@@ -1,0 +1,14 @@
+---
+
+- copy: src=sensu.repo dest=/etc/yum.repos.d/
+        owner=root group=root mode=0644
+
+- yum: name={{ item }} state=present
+  with_items:
+  - ruby
+  - ruby-devel
+  - rubygems
+  - rubygem-aws-sdk
+
+- yum: name=sensu state=present
+

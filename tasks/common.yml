@@ -1,20 +1,12 @@
 ---
-- name: add the official Sensu repository's key
-  apt_key: url=http://repos.sensuapp.org/apt/pubkey.gpg state=present
+- include: common_redhat.yml
+  when: ansible_os_family == 'RedHat'
 
-- name: add the official Sensu repository
-  copy:
-    src=sensu-server.list
-    dest=/etc/apt/sources.list.d/
-    backup=yes
-  register: aptrepo
+- include: common_debian.yml
+  when: ansible_os_family == 'Debian'
 
-- name: refresh apt cache
-  apt: update_cache=yes
-  when: aptrepo.changed
-
-- name: install sensu
-  apt: name=sensu state=present
+- include: notsupported.yml
+  when: ansible_os_family not in ['RedHat', 'Debian']
 
 - name: set which Ruby to use
   lineinfile:
