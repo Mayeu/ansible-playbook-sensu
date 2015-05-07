@@ -1,4 +1,16 @@
 ---
+- hosts: all
+  tasks:
+     - group_by: key={{ ansible_os_family }}
+
+- hosts: RedHat
+  user: vagrant
+  sudo: yes
+  pre_tasks:
+  - yum: name=libselinux-python state=present
+  roles:
+  - epel
+
 - hosts: sensu_server_client
   user: vagrant
   vars:
