@@ -22,7 +22,6 @@
   with_items:
     - server
     - api
-    - dashboard
 
 - name: generate /etc/sensu/conf.d/checks.json
   template:
