@@ -35,7 +35,7 @@
     group="{{ sensu_group }}"
     mode=0750
     state=directory
-  when: not sensu_server_rabbitmq_insecure
+  when: sensu_server_rabbitmq_use_keys
 
 - name: copy the SSL certificate & key
   copy:
@@ -48,7 +48,7 @@
   with_items:
     - "{{ sensu_cert_file_name }}"
     - "{{ sensu_key_file_name }}"
-  when: not sensu_server_rabbitmq_insecure
+  when: sensu_server_rabbitmq_use_keys
   notify:
     - restart sensu server
     - restart sensu client

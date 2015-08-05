@@ -120,7 +120,8 @@ please uses the `sensu_settings` variable, that will generate the
 `sensu_server_rabbitmq_vhost`|String|RabbitMQ virtual host|`"/sensu"`
 `sensu_server_rabbitmq_hostname`|String|Hostname of the RabbitMQ server|`"127.0.0.1"`
 `sensu_server_rabbitmq_port`|Integer|Port of the RabbitMQ server|`5672`
-`sensu_server_rabbitmq_insecure`|String|Disabel TLS connection to RabbitMQ|`"false"`
+`sensu_server_rabbitmq_insecure`|String|Disable TLS connection to RabbitMQ|`"false"`
+`sensu_server_rabbitmq_use_keys`|String|Use TLS client keys for authentication to RabbitMQ|`"true"`
 `sensu_server_rabbitmq_user`|String|Username to connect to RabbitMQ|`"sensu"`
 `sensu_server_rabbitmq_password`|String|Password to connect to RabbitMQ|`"placeholder"`
 `sensu_server_dashboard_host`|String|The address on which Uchiwa will listen|`"0.0.0.0"`
