@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log follow the convention proposed by [Kepp a CHANGELOG](http://keepachangelog.com/).
 
+## Unreleased
+
+### Fixed
+
+- The playbook now force all the sensu part to be started when it is runned. Should fix #12
+
 ## 0.1.0
 
 ### Added
