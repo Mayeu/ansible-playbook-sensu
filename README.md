@@ -17,7 +17,23 @@ welcome to support other OS.
 
 Just use Galaxy:
 
-    $ ansible-galaxy install Mayeu.sensu
+    $ ansible-galaxy install Mayeu.sensu,0.2.0
+
+## Semantic versioning 2.0.0
+
+Starting with the tag
+[0.1.0](https://github.com/Mayeu/ansible-playbook-sensu/tree/0.1.0),
+this playbook use semantic versioning.
+
+The public API defined in the semantic versioning correspond to the
+settings available to the user. Breaking the API (incrementing from
+X.Y.Z to (X+1).Y.Z) in this context mean that the user need to change
+its own configuration for the playbook to run.
+
+Any new feature added (from X.Y.Z to X.(Y+1).Z) should have a working
+default value that need no user interaction by default. If a feature
+addition require user interaction, then it is not a minor upgrade,
+but a major one.
 
 ## Expectation
 
