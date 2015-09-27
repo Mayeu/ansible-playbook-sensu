@@ -104,8 +104,8 @@ please uses the `sensu_settings` variable, that will generate the
 
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
-`sensu_client_hostname`|String|Hostname of this client|`"localhost"`
-`sensu_client_address`|String|Address of this client|`"127.0.0.1"`
+`sensu_client_hostname`|String|Hostname of this client|`"{{ ansible_hostname }}"`
+`sensu_client_address`|String|Address of this client|`"{{ ansible_default_ipv4.address }}"`
 `sensu_client_subscription_names`|List|List of test to execute on this client| `[test]`
 
 ### Server variables

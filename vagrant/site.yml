@@ -4,8 +4,8 @@
   vars:
     - sensu_install_server: true
     - sensu_install_client: true
-    - sensu_client_hostname: "sensu-server-client"
-    - sensu_client_address: "192.168.60.2"
+    #- sensu_client_hostname: "sensu-server-client"
+    #- sensu_client_address: "192.168.60.2"
   vars_files:
     - test-vars.yml
   roles:
@@ -29,8 +29,8 @@
   vars:
     - sensu_install_server: false
     - sensu_install_client: true
-    - sensu_client_hostname: "sensu-client"
-    - sensu_client_address: "192.168.60.4"
+    #- sensu_client_hostname: "sensu-client"
+    #- sensu_client_address: "192.168.60.4"
   vars_files:
     - test-vars.yml
   roles:

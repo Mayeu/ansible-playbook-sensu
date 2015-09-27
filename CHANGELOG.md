@@ -5,6 +5,10 @@ This change log follow the convention proposed by [Kepp a CHANGELOG](http://keep
 
 ## Unreleased
 
+### Changed
+
+- `sensu_client_hostname` and `sensu_client_address` are now using fact data by default. This will prevent the need for override in a lot of cases.
+
 ### Fixed
 
 - The playbook now force all the sensu part to be started when it is runned. Should fix #12
