@@ -17,7 +17,7 @@ welcome to support other OS.
 
 Just use Galaxy:
 
-    $ ansible-galaxy install Mayeu.sensu,0.2.0
+    $ ansible-galaxy install Mayeu.sensu
 
 ## Semantic versioning 2.0.0
 
