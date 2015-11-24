@@ -1,6 +1,8 @@
 ---
 # defaults file for sensu
 
+sensu_file_base: ''
+
 # Variable to control the installation
 sensu_install_client: true
 sensu_install_server: true
