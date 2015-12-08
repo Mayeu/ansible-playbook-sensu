@@ -22,6 +22,15 @@
     regexp=^EMBEDDED_RUBY=
     line=EMBEDDED_RUBY={{ sensu_embedded_ruby }}
 
+- name: install required gems
+  gem:
+    name="{{ item.name }}"
+    version="{{ item.version }}"
+    state=present
+    executable="{{ sensu_embedded_path }}/gem"
+    user_install=no
+  with_items: "{{ sensu_gems }}"
+
 - name: set which user to use
   lineinfile:
     dest=/etc/default/sensu

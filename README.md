@@ -94,6 +94,10 @@ If you have custom key/value you want to add to your client configuration,
 please uses the `sensu_settings` variable, that will generate the
 `settings.json` file.
 
+## Gem dependencies
+
+Some plugins depend on installed gems. Required gems can be installed via Sensu's embedded `gem` binary using the `sensu_gems` variable. The variable expects a list of hashes each with a gem `name` and `version` string key.
+
 ## Role Variables
 
 ### Behaviour variables
@@ -121,7 +125,8 @@ please uses the `sensu_settings` variable, that will generate the
 `sensu_rabbitmq_ssl_from_s3`|Boolean|Determine if we should pull RabbitMQ SSL certificates from an S3 buckets|`false`
 `sensu_rabbitmq_ssl_s3_bucket`|String|Name of the S3 bucket containing RabbitMQ certificates|`""`
 `sensu_rabbitmq_ssl_s3_path`|String|Path within the S3 bucket where RabbitMQ certificates are stored|`""`
-
+`sensu_embedded_path`|String|Path to Sensu's embedded directory|`/opt/sensu/embedded/bin`
+`sensu_gems`|Complex type|A variable representing gems to install via Sensu's embedded `gem` binary|`[]`
 
 ### Client variables
 
