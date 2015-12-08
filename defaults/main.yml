@@ -42,6 +42,10 @@ sensu_server_rabbitmq_insecure: false
 sensu_server_rabbitmq_user:     "sensu"
 sensu_server_rabbitmq_password: "placeholder"
 
+sensu_rabbitmq_ssl_from_s3: False
+sensu_rabbitmq_ssl_s3_bucket: ""
+sensu_rabbitmq_ssl_s3_path: ""
+
 sensu_server_dashboard_host:     "0.0.0.0"
 sensu_server_dashboard_port:     "3000"
 sensu_server_dashboard_user:     "uchiwa"

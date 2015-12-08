@@ -50,6 +50,8 @@ files/
  └── sensu_client_key.pem
 ```
 
+Optionally RabbitMQ certificates can be retrieved from an S3 bucket. The system where Ansible runs must have authorization to access this bucket in order to use this feature. See `sensu_rabbitmq_ssl_from_s3`, `sensu_rabbitmq_ssl_s3_bucket`, and `sensu_rabbitmq_ssl_s3_path` Ansible variables for configuration.
+
 Note that you can find a complete set of certificates and keys in
 `vagrant/files/` for **test purpose only**. Be smart, don't use certificates &
 keys publicly available in production! You can also customize this path, see
@@ -116,6 +118,10 @@ please uses the `sensu_settings` variable, that will generate the
 `sensu_cert_dir`|String|Directory to look for the certificates|`files`
 `sensu_cert_file_name`|String|Filename of the client certificate|`sensu_client_cert.pem`
 `sensu_key_file_name`|String|Filename of the client key|`sensu_client_key.pem`
+`sensu_rabbitmq_ssl_from_s3`|Boolean|Determine if we should pull RabbitMQ SSL certificates from an S3 buckets|`false`
+`sensu_rabbitmq_ssl_s3_bucket`|String|Name of the S3 bucket containing RabbitMQ certificates|`""`
+`sensu_rabbitmq_ssl_s3_path`|String|Path within the S3 bucket where RabbitMQ certificates are stored|`""`
+
 
 ### Client variables
 
