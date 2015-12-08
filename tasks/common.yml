@@ -37,6 +37,19 @@
     state=directory
   when: not sensu_server_rabbitmq_insecure
 
+- name: pull rabbit ssl client certificates from s3
+  s3:
+    bucket: "{{ sensu_rabbitmq_ssl_s3_bucket }}"
+    object: "{{ sensu_rabbitmq_ssl_s3_path }}/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: get
+  with_items:
+    - src: "{{ sensu_cert_file_name }}"
+      dest: "/etc/sensu/ssl/{{ sensu_cert_file_name }}"
+    - src: "{{ sensu_key_file_name }}"
+      dest: "/etc/sensu/ssl/{{ sensu_key_file_name }}"
+  when: sensu_rabbitmq_ssl_from_s3
+
 - name: copy the SSL certificate & key
   copy:
     src={{ sensu_cert_dir }}/{{ item }}
@@ -48,7 +61,7 @@
   with_items:
     - "{{ sensu_cert_file_name }}"
     - "{{ sensu_key_file_name }}"
-  when: not sensu_server_rabbitmq_insecure
+  when: not sensu_server_rabbitmq_insecure and not sensu_rabbitmq_ssl_from_s3
   notify:
     - restart sensu server
     - restart sensu client
