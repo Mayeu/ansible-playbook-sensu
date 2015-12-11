@@ -15,6 +15,10 @@ sensu_settings: {}
 
 sensu_embedded_ruby: "true"
 
+sensu_embedded_path: "/opt/sensu/embedded/bin"
+
+sensu_gems: []
+
 # Sensu Certificates
 sensu_cert_dir:       files
 sensu_cert_file_name: sensu_client_cert.pem
