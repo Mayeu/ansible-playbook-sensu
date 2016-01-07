@@ -2,6 +2,9 @@
    "client": {
       "name": "{{ sensu_client_hostname }}",
       "address": "{{ sensu_client_address }}",
-      "subscriptions": [ "{{ "\",\"".join(sensu_client_subscription_names) }}" ]
+      "subscriptions": [ "{{ "\",\"".join(sensu_client_subscription_names) }}" ],
+      "keepalive": {
+          "handler": "{{ sensu_client_keepalive_handler }}"
+      }
    }
 }

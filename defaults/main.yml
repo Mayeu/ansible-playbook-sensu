@@ -22,6 +22,7 @@ sensu_key_file_name:  sensu_client_key.pem
 sensu_client_hostname:           "{{ ansible_hostname }}"
 sensu_client_address:            "{{ ansible_default_ipv4.address }}"
 sensu_client_subscription_names: [test]
+sensu_client_keepalive_handler: "default"
 
 # Sensu Server variable
 sensu_server_redis_host: "127.0.0.1"
