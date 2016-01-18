@@ -1,12 +1,12 @@
 ---
-- name: add the official Sensu repository's key
+- name: "add the official Sensu repository's key"
   apt_key: url=http://repos.sensuapp.org/apt/pubkey.gpg state=present
 
 - name: add the official Sensu repository
   copy:
-    src=sensu-server.list
-    dest=/etc/apt/sources.list.d/
-    backup=yes
+    src: sensu-server.list
+    dest: /etc/apt/sources.list.d/
+    backup: yes
   register: aptrepo
 
 - name: refresh apt cache
@@ -18,33 +18,33 @@
 
 - name: set which Ruby to use
   lineinfile:
-    dest=/etc/default/sensu
-    regexp=^EMBEDDED_RUBY=
-    line=EMBEDDED_RUBY={{ sensu_embedded_ruby }}
+    dest: /etc/default/sensu
+    regexp: "^EMBEDDED_RUBY="
+    line: "EMBEDDED_RUBY={{ sensu_embedded_ruby }}"
 
 - name: set which user to use
   lineinfile:
-    dest=/etc/default/sensu
-    regexp=^USER=
-    line=USER={{ sensu_user }}
+    dest: /etc/default/sensu
+    regexp: "^USER="
+    line: "USER={{ sensu_user }}"
 
 - name: create the SSL directory
   file:
-    path=/etc/sensu/ssl
-    owner="{{ sensu_user }}"
-    group="{{ sensu_group }}"
-    mode=0750
-    state=directory
+    path: /etc/sensu/ssl
+    owner: "{{ sensu_user }}"
+    group: "{{ sensu_group }}"
+    mode: 0750
+    state: directory
   when: not sensu_server_rabbitmq_insecure
 
 - name: copy the SSL certificate & key
   copy:
-    src={{ sensu_cert_dir }}/{{ item }}
-    dest=/etc/sensu/ssl/{{ item }}
-    owner="{{ sensu_user }}"
-    group="{{ sensu_group }}"
-    mode=0640
-    backup=yes
+    src: "{{ sensu_cert_dir }}/{{ item }}"
+    dest: "/etc/sensu/ssl/{{ item }}"
+    owner: "{{ sensu_user }}"
+    group: "{{ sensu_group }}"
+    mode: 0640
+    backup: yes
   with_items:
     - "{{ sensu_cert_file_name }}"
     - "{{ sensu_key_file_name }}"
@@ -55,12 +55,12 @@
 
 - name: generate rabbitmq.json
   template:
-    src=rabbitmq.json.j2
-    dest=/etc/sensu/conf.d/rabbitmq.json
-    owner=sensu
-    group=sensu
-    mode=0640
-    backup=yes
+    src: rabbitmq.json.j2
+    dest: /etc/sensu/conf.d/rabbitmq.json
+    owner: sensu
+    group: sensu
+    mode: 0640
+    backup: yes
   notify:
     - restart sensu server
     - restart sensu client
