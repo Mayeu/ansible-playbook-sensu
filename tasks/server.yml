@@ -60,6 +60,7 @@
     - api
     - settings
     - checks
+    - filters
   notify:
     - restart sensu server
 
