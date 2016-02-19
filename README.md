@@ -82,6 +82,7 @@ anymore, but split all the files in the `/etc/sensu/conf.d` folder:
     ├── checks.json
     ├── client.json
     ├── handlers.json
+    ├── filters.json
     ├── rabbitmq.json
     ├── redis.json
     └── settings.json
@@ -118,6 +119,7 @@ Some plugins depend on installed gems. Required gems can be installed via Sensu'
 `sensu_group`|String|the group running sensu|`sensu`
 `sensu_checks`|Complex type|A variable representing the checks configuration. Will be auto converted to JSON|`[]`
 `sensu_handlers`|Complex type|A variable representing the handlers configuration. Will be auto converted to JSON|`[]`
+`sensu_filters`|Complex type|A variable representing the filter configuration. Will be auto converted to JSON|`[]`
 `sensu_embedded_ruby`|String|Indicate if Sensu should use the embedded Ruby, or the system one|`"true"`
 `sensu_cert_dir`|String|Directory to look for the certificates|`files`
 `sensu_cert_file_name`|String|Filename of the client certificate|`sensu_client_cert.pem`
@@ -135,6 +137,7 @@ Some plugins depend on installed gems. Required gems can be installed via Sensu'
 `sensu_client_hostname`|String|Hostname of this client|`"{{ ansible_hostname }}"`
 `sensu_client_address`|String|Address of this client|`"{{ ansible_default_ipv4.address }}"`
 `sensu_client_subscription_names`|List|List of test to execute on this client| `[test]`
+`sensu_client_attributes`|Object|Additional attributes to set for the client|None
 
 ### Server variables
 

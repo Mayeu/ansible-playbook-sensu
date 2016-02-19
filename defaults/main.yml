@@ -58,7 +58,6 @@ sensu_server_dashboard_refresh:  5
 
 sensu_checks:   []
 sensu_handlers: []
+sensu_filters: []
 
 sensu_server_patch_init_scripts: true
-
-
