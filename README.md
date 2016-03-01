@@ -138,6 +138,7 @@ Some plugins depend on installed gems. Required gems can be installed via Sensu'
 `sensu_client_address`|String|Address of this client|`"{{ ansible_default_ipv4.address }}"`
 `sensu_client_subscription_names`|List|List of test to execute on this client| `[test]`
 `sensu_client_attributes`|Object|Additional attributes to set for the client|None
+`sensu_client_attributes_redact`|List|List of attributes to redact for the client|None
 
 ### Server variables
 
