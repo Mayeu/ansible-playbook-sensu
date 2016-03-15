@@ -1,0 +1,17 @@
+---
+- name: add the official Sensu repository\'s key
+  apt_key: url=http://repos.sensuapp.org/apt/pubkey.gpg state=present
+
+- name: add the official Sensu repository
+  copy:
+    src=sensu-server.list
+    dest=/etc/apt/sources.list.d/
+    backup=yes
+  register: aptrepo
+
+- name: refresh apt cache
+  apt: update_cache=yes
+  when: aptrepo.changed
+
+- name: install sensu
+  apt: name=sensu state=present
