@@ -4,7 +4,7 @@
       "address": "{{ sensu_client_address }}",
 {% if sensu_client_attributes is defined %}
 {% for item,value in sensu_client_attributes.iteritems() %}
-      "{{ item }}": "{{ value }}",
+      "{{ item }}": {{ value | to_json }},
 {% endfor %}
 {% endif %}
       "subscriptions": [ "{{ "\",\"".join(sensu_client_subscription_names) }}" ]
