@@ -129,14 +129,15 @@ please uses the `sensu_settings` variable, that will generate the
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
 `sensu_server_redis_host`|String|Hostname of the Redis server|`"127.0.0.1"`
+`sensu_server_redis_port`|String|Port of the Redis server|`"6379"`
 `sensu_server_api_host`|String|Adress of the Sensu API server|`"127.0.0.1"`
-`sensu_server_api_host`|String|Port of the Sensu API server|`4567`
+`sensu_server_api_port`|String|Port of the Sensu API server|`4567`
 `sensu_server_api_user`|String|User to connect to the api|`"sensu"`
 `sensu_server_api_password`|String|Password for the api user|`"placeholder"`
 `sensu_server_rabbitmq_vhost`|String|RabbitMQ virtual host|`"/sensu"`
 `sensu_server_rabbitmq_hostname`|String|Hostname of the RabbitMQ server|`"127.0.0.1"`
 `sensu_server_rabbitmq_port`|Integer|Port of the RabbitMQ server|`5672`
-`sensu_server_rabbitmq_insecure`|String|Disabel TLS connection to RabbitMQ|`"false"`
+`sensu_server_rabbitmq_insecure`|String|Disable TLS connection to RabbitMQ|`"false"`
 `sensu_server_rabbitmq_user`|String|Username to connect to RabbitMQ|`"sensu"`
 `sensu_server_rabbitmq_password`|String|Password to connect to RabbitMQ|`"placeholder"`
 `sensu_server_dashboard_host`|String|The address on which Uchiwa will listen|`"0.0.0.0"`

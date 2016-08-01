@@ -25,6 +25,7 @@ sensu_client_subscription_names: [test]
 
 # Sensu Server variable
 sensu_server_redis_host: "127.0.0.1"
+sensu_server_redis_port: 6379
 
 sensu_server_api_host:     "127.0.0.1"
 sensu_server_api_port:     4567
