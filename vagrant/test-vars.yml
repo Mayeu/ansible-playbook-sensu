@@ -10,6 +10,7 @@ rabbitmq_users_definitions:
   - vhost:    "{{ sensu_server_rabbitmq_vhost }}"
     user:     "{{ sensu_server_rabbitmq_user }}"
     password: "{{ sensu_server_rabbitmq_password }}"
+    prefetch: "{{ sensu_server_rabbitmq_prefetch }}"
 
 rabbitmq_cacert :     "files/rabbitmq_cacert.pem"
 rabbitmq_server_key:  "files/rabbitmq_server_key.pem"
