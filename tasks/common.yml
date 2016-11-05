@@ -1,27 +1,11 @@
 ---
-- name: add the official Sensu repository's key
-  apt_key: url=http://repos.sensuapp.org/apt/pubkey.gpg state=present
-
-- name: add the official Sensu repository
-  copy:
-    src=sensu-server.list
-    dest=/etc/apt/sources.list.d/
-    backup=yes
-  register: aptrepo
-
-- name: refresh apt cache
-  apt: update_cache=yes
-  when: aptrepo.changed
-
-- name: install sensu
-  apt: name=sensu state=present
 
 - name: set which Ruby to use
   lineinfile:
     dest=/etc/default/sensu
     regexp=^EMBEDDED_RUBY=
     line=EMBEDDED_RUBY={{ sensu_embedded_ruby }}
-
+    
 - name: set which user to use
   lineinfile:
     dest=/etc/default/sensu

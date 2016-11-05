@@ -1,6 +1,6 @@
 ---
 - name: install uchiwa
-  apt: name=uchiwa state=present
+  package: name=uchiwa state=present
 
 - name: create uchiwa config file
   template:
