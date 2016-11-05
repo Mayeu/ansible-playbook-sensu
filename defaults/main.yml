@@ -1,6 +1,8 @@
 ---
 # defaults file for sensu
 
+sensu_file_base: ''
+
 # Variable to control the installation
 sensu_install_client: true
 sensu_install_server: true
@@ -12,6 +14,10 @@ sensu_group: sensu
 sensu_settings: {}
 
 sensu_embedded_ruby: "true"
+
+sensu_embedded_path: "/opt/sensu/embedded/bin"
+
+sensu_gems: []
 
 # Sensu Certificates
 sensu_cert_dir:       files
@@ -40,6 +46,10 @@ sensu_server_rabbitmq_insecure: false
 sensu_server_rabbitmq_user:     "sensu"
 sensu_server_rabbitmq_password: "placeholder"
 
+sensu_rabbitmq_ssl_from_s3: False
+sensu_rabbitmq_ssl_s3_bucket: ""
+sensu_rabbitmq_ssl_s3_path: ""
+
 sensu_server_dashboard_host:     "0.0.0.0"
 sensu_server_dashboard_port:     "3000"
 sensu_server_dashboard_user:     "uchiwa"
@@ -48,7 +58,6 @@ sensu_server_dashboard_refresh:  5
 
 sensu_checks:   []
 sensu_handlers: []
+sensu_filters: []
 
 sensu_server_patch_init_scripts: true
-
-
