@@ -1,3 +1,6 @@
+# THIS PROJECT IS UNMAINTAINED
+If you want a maintained playbook, go to [sensu/sensu-ansible](https://github.com/sensu/sensu-ansible).
+
 # Sensu
 
 Playbook to install and configure Sensu.
