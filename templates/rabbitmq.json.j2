@@ -2,8 +2,10 @@
   "rabbitmq": {
     {% if not sensu_server_rabbitmq_insecure | bool %}
       "ssl": {
+        {% if sensu_server_rabbitmq_use_keys | bool %}
         "private_key_file": "/etc/sensu/ssl/{{ sensu_key_file_name }}",
         "cert_chain_file": "/etc/sensu/ssl/{{ sensu_cert_file_name }}"
+        {% endif %}
       },
     {% endif %}
     "port": {{ sensu_server_rabbitmq_port }},

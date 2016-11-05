@@ -37,6 +37,7 @@ sensu_server_rabbitmq_hostname: "127.0.0.1"
 # connection, change that and the following boolean to true.
 sensu_server_rabbitmq_port:     "5671"
 sensu_server_rabbitmq_insecure: false
+sensu_server_rabbitmq_use_keys: true
 sensu_server_rabbitmq_user:     "sensu"
 sensu_server_rabbitmq_password: "placeholder"
 
