@@ -21,7 +21,7 @@
 
 - name: copy the handlers files
   copy:
-    src=files/sensu/handlers/
+    src="{{sensu_file_base}}files/sensu/handlers/"
     dest=/etc/sensu/handlers/
     owner=sensu
     group=sensu
@@ -29,7 +29,7 @@
 
 - name: copy extension files
   copy:
-    src=files/sensu/extensions/
+    src="{{sensu_file_base}}files/sensu/extensions/"
     dest=/etc/sensu/extensions/
     owner=sensu
     group=sensu
@@ -39,7 +39,7 @@
 
 - name: copy plugins files
   copy:
-    src=files/sensu/plugins/
+    src="{{sensu_file_base}}files/sensu/plugins/"
     dest=/etc/sensu/plugins/
     owner=sensu
     group=sensu

@@ -104,6 +104,7 @@ please uses the `sensu_settings` variable, that will generate the
 `sensu_install_client`|Boolean|Determine if we need to install the client part|`true`
 `sensu_install_server`|Boolean|Determine if we need to install the server part|`true`
 `sensu_install_uchiwa`|Boolean|Determine if we need to install the uchiwa. Will only work in `sensu_install_server` is also true|`true`
+`sensu_file_base`|String|Base path for Ansible file operations. Allows for overriding source path for handlers, extensions, and plugins|`""`
 
 ### General variables
 
