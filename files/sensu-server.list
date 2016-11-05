@@ -1,2 +1,2 @@
 # Official repository of rabbitmq
-deb http://repos.sensuapp.org/apt sensu main
+deb  http://repositories.sensuapp.org/apt sensu main
