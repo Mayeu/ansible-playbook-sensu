@@ -1,7 +1,7 @@
 ---
 - name: copy all the checks files
   copy:
-    src=files/sensu/plugins/
+    src="{{ sensu_file_base }}files/sensu/plugins/"
     dest=/etc/sensu/plugins/
     owner="{{ sensu_user }}"
     group="{{ sensu_group }}"
