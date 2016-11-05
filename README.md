@@ -58,6 +58,9 @@ Note that you can find a complete set of certificates and keys in
 keys publicly available in production! You can also customize this path, see
 [Roles Variables](#roles-variables).
 
+The prefetch in Sensu defaults to 1, but this can have a negotiation overhead,
+particularly with clusters, so can be changed.
+
 The playbook also expect that you have the following folder organisation for
 Sensu script in your `files/` folder:
 
@@ -142,6 +145,7 @@ please uses the `sensu_settings` variable, that will generate the
 `sensu_server_rabbitmq_insecure`|String|Disabel TLS connection to RabbitMQ|`"false"`
 `sensu_server_rabbitmq_user`|String|Username to connect to RabbitMQ|`"sensu"`
 `sensu_server_rabbitmq_password`|String|Password to connect to RabbitMQ|`"placeholder"`
+`sensu_server_rabbitmq_prefetch`|Integer|Prefetch for RabbitMQ|`1`
 `sensu_server_dashboard_host`|String|The address on which Uchiwa will listen|`"0.0.0.0"`
 `sensu_server_dashboard_port`|String|The port on which Uchiwa will listen|` "3000"`
 `sensu_server_dashboard_user`|String|The username of the Uchiwa dashboard|`"uchiwa"`
