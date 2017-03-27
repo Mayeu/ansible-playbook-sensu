@@ -1,6 +1,6 @@
 ---
 - name: add the official Sensu repository's key
-  apt_key: url=http://repos.sensuapp.org/apt/pubkey.gpg state=present
+  apt_key: url=https://sensu.global.ssl.fastly.net/apt/pubkey.gpg state=present
 
 - name: add the official Sensu repository
   copy:
