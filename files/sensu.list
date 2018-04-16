@@ -1,0 +1,2 @@
+# Official repository of sensu with OS tag "trusty"
+deb https://sensu.global.ssl.fastly.net/apt trusty main

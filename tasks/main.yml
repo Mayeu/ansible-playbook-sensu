@@ -11,3 +11,6 @@
 
 - include: client.yml
   when: sensu_install_client
+
+- include: pagerduty_plugin.yml
+  when: sensu_install_server and sensu_install_uchiwa and sensu_install_client
