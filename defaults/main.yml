@@ -51,4 +51,4 @@ sensu_handlers: []
 
 sensu_server_patch_init_scripts: true
 
-
+pagerduty_integration_key: "*********"

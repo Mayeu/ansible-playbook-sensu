@@ -1,0 +1,46 @@
+---
+- name: install apt-transport-https
+  apt:
+    name: apt-transport-https
+    state: present
+
+- name: add the official Pagerduty repository's key
+  shell: wget -O - https://packages.pagerduty.com/GPG-KEY-pagerduty | sudo apt-key add -
+
+- name: add the official Pagerduty repository
+  copy:
+    src=pdagent.list
+    dest=/etc/apt/sources.list.d/
+    backup=yes
+
+
+- name: refresh apt cache
+  apt: update_cache=yes
+
+- name: install pdagent
+  apt:
+    name: pdagent
+    state: present
+
+- name: install pdagent
+  apt:
+    name: pdagent-integrations
+    state: present
+
+- name: PagerDuty handler configuration to Sensu installation’s conf.d directory
+  template:
+    src=pagerduty_handler.json.j2
+    dest=/etc/sensu/conf.d/pagerduty_handler.json
+    owner=sensu
+    group=sensu
+    mode=0640
+    backup=yes
+  notify:
+      - restart sensu server
+      - restart sensu client
+
+- name: update sensu
+  apt:
+    name: sensu=1.3*
+    state: present
+

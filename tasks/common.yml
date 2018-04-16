@@ -4,17 +4,32 @@
 
 - name: add the official Sensu repository
   copy:
-    src=sensu-server.list
+    src=sensu.list
     dest=/etc/apt/sources.list.d/
     backup=yes
   register: aptrepo
 
+- name: add Erlang repo key
+  get_url:
+    url: https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
+    dest: /home/ubuntu/erlang-solutions_1.0_all.deb
+
+- name: install deb file
+  apt:
+    deb: /home/ubuntu/erlang-solutions_1.0_all.deb
+
 - name: refresh apt cache
   apt: update_cache=yes
-  when: aptrepo.changed
+
+- name: install erlang
+  apt:
+    name: erlang
+    state: present
 
 - name: install sensu
-  apt: name=sensu state=present
+  apt:
+    name: sensu
+    state: present
 
 - name: set which Ruby to use
   lineinfile:
@@ -64,3 +79,9 @@
   notify:
     - restart sensu server
     - restart sensu client
+    - restart rabbitmq-server
+
+
+
+
+

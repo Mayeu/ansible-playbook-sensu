@@ -27,15 +27,15 @@
     group=sensu
     mode=0750
 
-- name: copy extension files
-  copy:
-    src=files/sensu/extensions/
-    dest=/etc/sensu/extensions/
-    owner=sensu
-    group=sensu
-    mode=0750
-  notify:
-    - restart sensu server
+#- name: copy extension files
+#  copy:
+#    src=files/sensu/extensions/
+#    dest=/etc/sensu/extensions/
+#    owner=sensu
+#    group=sensu
+#    mode=0750
+#  notify:
+#    - restart sensu server
 
 - name: copy plugins files
   copy:
@@ -71,3 +71,4 @@
   with_items:
     - server
     - api
+
